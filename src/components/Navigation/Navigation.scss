@@ -1,0 +1,19 @@
+.mainNavContainer {
+  display: block;
+  width: 10%;
+ 
+  ul {
+    padding: 10px;
+    background: aquamarine;
+
+    li {
+      line-height: 2;
+
+      .active {
+        background: red;
+        color: #fff;
+        font-weight: bold;
+      }
+    }
+  }
+}

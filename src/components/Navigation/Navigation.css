@@ -1,0 +1,12 @@
+.mainNavContainer {
+  display: block;
+  width: 10%; }
+  .mainNavContainer ul {
+    padding: 10px;
+    background: aquamarine; }
+    .mainNavContainer ul li {
+      line-height: 2; }
+      .mainNavContainer ul li .active {
+        background: red;
+        color: #fff;
+        font-weight: bold; }

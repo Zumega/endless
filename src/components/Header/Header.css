@@ -1,0 +1,6 @@
+header {
+  font-size: 72pt;
+  font-weight: bold;
+  border-bottom: 1px solid  #000; }
+  header h1 {
+    margin: 10px; }
