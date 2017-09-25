@@ -1,3 +1,7 @@
+#OS
+.Thumb_DB
+.DS_Store
+
 # Logs
 logs
 *.log
