@@ -11,46 +11,12 @@ class StoriesContainer extends Component {
     super(props);
 
     this.state = {
+      genres: props.genres,
       genre: null,
-      stories: null
+      stories: props.stories,
+      story: null,
+      authors: props.authorsData
     };
-
-    this.genres = [
-      'Fantacy',
-      'Sci-Fi',
-      'Romance',
-      'Horror', 
-      'Fiction'
-    ];
-
-    // TODO: make this a service call
-    this.STORIES = {
-      fantacy: [
-        {
-          id: '654',
-          genre: 'Fantacy',
-          name: 'test',
-          blurb: 'this is a test'
-        }
-      ],
-      scifi: [],
-      romance: [],
-      horror: [],
-      fiction: [
-        {
-          id: '987',
-          genre: 'Fiction',
-          name: 'test 23',
-          blurb: 'this is a test'
-        },
-        {
-          id: '6321',
-          genre: 'Fiction',
-          name: 'monkey',
-          blurb: 'this is a test'
-        }
-      ]
-    }
 
     this.handleGenre = this.handleGenre.bind(this);
   }
@@ -60,26 +26,30 @@ class StoriesContainer extends Component {
       return {
         ...prevState,
         genre: genre,
-        stories: this.STORIES[simpleString(genre)]
+        story: this.state.stories[simpleString(genre)]
       }
     });
   }
 
   render() {
     const {
+      genres,
       genre,
-      stories
+      story,
+      authors
     } = this.state;
 
     return (
       <div>
         <div>
-          <GenresContainer genres={this.genres} handleGenre={this.handleGenre} />
+          <GenresContainer genres={genres} handleGenre={this.handleGenre} />
           {
-            stories && stories.length > 0 && <Stories genre={genre} stories={stories} />
+            story && story.length > 0 && <Stories genre={genre} stories={story} />
           }
         </div>
-        <AuthorsContainer />
+        {
+          <AuthorsContainer authors={authors} />
+        }
       </div>
     );
   }

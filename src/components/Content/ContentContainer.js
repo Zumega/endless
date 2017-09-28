@@ -19,16 +19,28 @@ class ContentContainer extends Component {
 
     const requests = [
       axios.get('api/intro.json'),
-      axios.get('api/intro.json')
+      axios.get('api/intro.json'),
+      axios.get('api/genres.json'),
+      axios.get('api/stories.json'),
+      axios.get('api/authors.json')
     ]
 
     axios.all(requests)
-      .then(axios.spread((intro, about) => {
+      .then(axios.spread((
+        intro, 
+        about, 
+        genres, 
+        story, 
+        authors
+      ) => {
         this.setState(prevState => (
           {
             ...prevState,
             introData: intro.data,
-            aboutData: about.data
+            aboutData: about.data,
+            genresData: genres.data,
+            storyData: story.data,
+            authorsData: authors.data
           }
         ))
       }))
@@ -49,7 +61,7 @@ class ContentContainer extends Component {
         case 'aboutData':
           return <AboutContainer />;
         case 'storyData':
-          return <StoriesContainer />;
+          return <StoriesContainer genres={this.state.genresData} stories={this.state.storyData} authorsData={this.state.authorsData} />;
         default:
           return template;
       }
@@ -59,8 +71,8 @@ class ContentContainer extends Component {
     return <span>LOADING</span>;
   }
 
-  handleBBC (text) {
-    return bcc(text);
+  handleBBC(text, key) {
+    return bcc(text, key);
   }
 
   render() {

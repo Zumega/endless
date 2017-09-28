@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 const Intro = ({ data, bbc }) => {
   return (
     <div>
-      { data.text.map(bbc) }
+      {data.text.map((txt, key) => bbc(txt, key)) }
       <br/><br/><br/><br/>
-      <p>{data.byLine}</p>
+      <p className="basic">{data.byLine}</p>
     </div>
   );
 }
