@@ -31,7 +31,7 @@ export function bcc (text, key) {
       data.push((
         <p key={key}>
         { split[i] }
-        { split[i + 1] && <Link to={split[i + 1]}>{split[i + 2]}</Link> }
+        { split[i + 1] && <Link to={'./' + split[i + 1]}>{split[i + 2]}</Link> }
         { split[i + 3] && split[i + 3] }
         </p>
       ));

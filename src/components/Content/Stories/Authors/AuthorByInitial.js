@@ -12,7 +12,7 @@ const AuthorByInitial = ({ authors, initial }) => {
 
     return authors.map(author => (
       <li key={author.guid}>
-        <Link to={'./' + simpleString(author.name)}>{author.name}</Link>
+        <Link to={'./author/' + simpleString(author.name)}>{author.name}</Link>
       </li>
     ));
   }

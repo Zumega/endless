@@ -1,0 +1,26 @@
+{
+  "guid": "987645312",
+  "name": "Walker TexasTyper",
+  "about": {
+    "storyCount": 1
+  },
+  "stories": {
+    "live": [
+      {
+        "id": "789654312",
+        "name": "woop toast"
+      },
+      {
+        "id": "0326546807",
+        "name": "Monkey FArt"
+      }
+    ],
+    "inEdit": [],
+    "inProgress": [
+      {
+        "id": "asd;lfkjasd;f",
+        "name": "I like cheese"
+      }
+    ]
+  }
+}

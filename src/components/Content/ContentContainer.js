@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Route } from 'react-router-dom';
+import { Route  } from 'react-router-dom';
 import { bcc } from '../Utility/Utilities';
 import './Content.css';
+import ErrorHandling from '../Utility/Error/Error';
 import Intro from './Intro/Intro';
 import AboutContainer from './About/AboutContainer';
 import StoriesContainer from './Stories/StoriesContainer';
+import AuthorContainer from './Aurthor/AuthorContainer';
+import LibraryCardContianer from './LibraryCard/LibraryCardContainer';
 
 class ContentContainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       introData: null,
       aboutData: null,
-      storyData: null
+      genresData: null,
+      storyData: null,
+      authorsData: null,
+      libraryCardData: null
     }
 
     const requests = [
@@ -22,7 +29,8 @@ class ContentContainer extends Component {
       axios.get('api/intro.json'),
       axios.get('api/genres.json'),
       axios.get('api/stories.json'),
-      axios.get('api/authors.json')
+      axios.get('api/authors.json'),
+      axios.get('api/libraryCard.json')
     ]
 
     axios.all(requests)
@@ -31,7 +39,8 @@ class ContentContainer extends Component {
         about, 
         genres, 
         story, 
-        authors
+        authors,
+        libraryCard
       ) => {
         this.setState(prevState => (
           {
@@ -40,35 +49,42 @@ class ContentContainer extends Component {
             aboutData: about.data,
             genresData: genres.data,
             storyData: story.data,
-            authorsData: authors.data
+            authorsData: authors.data,
+            libraryCardData: libraryCard.data
           }
         ))
-      }))
-      .catch(error => {
-        console.log(error, 'needs universal error handling');
-      });
+      }));
     
     this.handleDataReady = this.handleDataReady.bind(this);
   }
 
-  handleDataReady(dataId) {
+  handleDataReady(dataId, props = null) {
     let template = <span>Bad dataId</span>;
 
-    if (this.state[dataId]) {
+    if (this.state[`${dataId}Data`]) {
       switch (dataId) {
-        case 'introData':
+        case 'intro':
           return <Intro data={this.state.introData} bbc={this.handleBBC} />;
-        case 'aboutData':
+        case 'about':
           return <AboutContainer />;
-        case 'storyData':
+        case 'story':
           return <StoriesContainer genres={this.state.genresData} stories={this.state.storyData} authorsData={this.state.authorsData} />;
+        case 'submit':
+          return <div>SUBMIT</div>;
+        case 'libraryCard':
+          return <LibraryCardContianer />;
         default:
           return template;
       }
     }
 
-    // TODO: make better loading message
-    return <span>LOADING</span>;
+    switch (dataId) {
+      case 'author':
+        return <AuthorContainer {...props} />;
+      default:
+        // TODO: make better loading message
+        return <span>LOADING</span>;
+    }
   }
 
   handleBBC(text, key) {
@@ -78,16 +94,25 @@ class ContentContainer extends Component {
   render() {
     return (
       <div className="contentContainer left">
+        {
+          this.props.error && <ErrorHandling error={this.props.error} />
+        }
         <section>
-          <Route exact={true} path="/" render={() => this.handleDataReady('introData')} />
-          <Route exact={true} path="/about" render={() => this.handleDataReady('aboutData')} />
-          <Route exact={true} path="/stories" render={() => this.handleDataReady('storyData')} />
+          <Route exact={true} path="/" render={() => this.handleDataReady('intro')} />
+          <Route exact={true} path="/about" render={() => this.handleDataReady('about')} />
+          <Route exact={true} path="/stories" render={() => this.handleDataReady('story')} />
+          <Route exact={true} path="/submit" render={() => this.handleDataReady('submit')} />
+          <Route exact={true} path="/library-card" render={() => this.handleDataReady('libraryCard')} />
+
+          <Route exact={true} path="/author/:id" render={(props) => this.handleDataReady('author', props)} />
         </section>
       </div>
     );
   }
 }
 
-ContentContainer.propType = {}
+ContentContainer.propType = {
+  error: PropTypes.object.isRequired
+}
 
 export default ContentContainer;
