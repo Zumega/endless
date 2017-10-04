@@ -7,6 +7,26 @@ class StoryGroups extends Component {
     super(props);
 
     this.groups = this.groups.bind(this);
+    this.genres = this.genres.bind(this);
+  }
+
+  genres(genres) {
+    let data = [];
+
+    for (let key in genres) {
+      if (genres.hasOwnProperty(key)) {
+        if (genres[key].length) {
+          data.push((
+            <li key={key}>
+              <h5>{key}</h5>
+              {genres[key].length > 0 && <StoryGroup stories={genres[key]} />}
+            </li>
+          ));
+        }
+      }
+    }
+
+    return data;
   }
   
   groups(stories) {
@@ -14,14 +34,16 @@ class StoryGroups extends Component {
 
     for (let key in stories) {
       if (stories.hasOwnProperty(key)) {
-        if (stories[key].length) {
-          data.push((
-            <li key={key}>
-              <h4>{key}</h4>
-              {stories[key].length > 0 && <StoryGroup stories={stories[key]} />}
-            </li>
-          ));
-        }
+        data.push(
+          <li key={key}>
+            <h4>{key}</h4> 
+            <ul>
+              {
+                this.genres(stories[key])
+              }
+            </ul>
+          </li>
+        )
       }
     }  
 

@@ -6,18 +6,20 @@ import { bcc } from '../Utility/Utilities';
 import './Content.css';
 import ErrorHandling from '../Utility/Error/Error';
 import Intro from './Intro/Intro';
-import AboutContainer from './About/AboutContainer';
+import IndexesContainer from './Indexes/IndexesContainer';
 import StoriesContainer from './Stories/StoriesContainer';
 import AuthorContainer from './Aurthor/AuthorContainer';
 import LibraryCardContianer from './LibraryCard/LibraryCardContainer';
+
+import Story from './Stories/Story/Story';
 
 class ContentContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      indexesData: null,
       introData: null,
-      aboutData: null,
       genresData: null,
       storyData: null,
       authorsData: null,
@@ -36,7 +38,7 @@ class ContentContainer extends Component {
     axios.all(requests)
       .then(axios.spread((
         intro, 
-        about, 
+        indexes, 
         genres, 
         story, 
         authors,
@@ -46,7 +48,7 @@ class ContentContainer extends Component {
           {
             ...prevState,
             introData: intro.data,
-            aboutData: about.data,
+            indexesData: indexes.data,
             genresData: genres.data,
             storyData: story.data,
             authorsData: authors.data,
@@ -65,8 +67,8 @@ class ContentContainer extends Component {
       switch (dataId) {
         case 'intro':
           return <Intro data={this.state.introData} bbc={this.handleBBC} />;
-        case 'about':
-          return <AboutContainer />;
+        case 'indexes':
+          return <IndexesContainer />;
         case 'story':
           return <StoriesContainer genres={this.state.genresData} stories={this.state.storyData} authorsData={this.state.authorsData} />;
         case 'submit':
@@ -81,6 +83,8 @@ class ContentContainer extends Component {
     switch (dataId) {
       case 'author':
         return <AuthorContainer {...props} />;
+      case 'stories':
+        return <Story {...props} />;
       default:
         // TODO: make better loading message
         return <span>LOADING</span>;
@@ -99,12 +103,14 @@ class ContentContainer extends Component {
         }
         <section>
           <Route exact={true} path="/" render={() => this.handleDataReady('intro')} />
-          <Route exact={true} path="/about" render={() => this.handleDataReady('about')} />
           <Route exact={true} path="/stories" render={() => this.handleDataReady('story')} />
+          <Route exact={true} path="/indexes" render={() => this.handleDataReady('indexes')} />
           <Route exact={true} path="/submit" render={() => this.handleDataReady('submit')} />
           <Route exact={true} path="/library-card" render={() => this.handleDataReady('libraryCard')} />
 
           <Route exact={true} path="/author/:id" render={(props) => this.handleDataReady('author', props)} />
+
+          <Route exact={true} path="/stories/:genre/:id" render={(props) => this.handleDataReady('stories', props)} />
         </section>
       </div>
     );

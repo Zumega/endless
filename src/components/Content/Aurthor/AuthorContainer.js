@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Author.css';
 
+import Profile from './Profile/Profile';
 import StoryGroups from './Stories/StoryGroups';
 
 class AuthorContainer extends Component {
@@ -31,7 +32,8 @@ class AuthorContainer extends Component {
     return (
       <div>
         {author && <h3>{author.name}</h3>}
-        <br /><br />
+        {author && <Profile author={author} />}
+        <hr />
         {author && <StoryGroups stories={author.stories} />}
       </div>
     );

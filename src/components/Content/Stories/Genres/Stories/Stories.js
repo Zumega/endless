@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { simpleString } from '../../../../Utility/Utilities';
+
 
 const Stories = ({ genre, stories }) => {
   return (
@@ -9,7 +12,7 @@ const Stories = ({ genre, stories }) => {
         {
           stories.map((story) => (
             <li key={story.id}>
-              <a>{story.name}</a>
+              <Link to={'/stories/' + simpleString(genre) + '/' + story.id}>{story.name}</Link>
               <p>{story.blurb}</p>
             </li>
           ))

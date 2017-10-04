@@ -5,22 +5,26 @@
     "storyCount": 1
   },
   "stories": {
-    "live": [
-      {
-        "id": "789654312",
-        "name": "woop toast"
-      },
-      {
-        "id": "0326546807",
-        "name": "Monkey FArt"
-      }
-    ],
+    "live": {
+      "Fantasy": [
+        {
+          "id": "789654312",
+          "name": "woop toast"
+        },
+        {
+          "id": "0326546807",
+          "name": "Monkey FArt"
+        }
+      ]
+    },
     "inEdit": [],
-    "inProgress": [
-      {
-        "id": "asd;lfkjasd;f",
-        "name": "I like cheese"
-      }
-    ]
+    "inProgress": {
+      "Sci-Fi": [
+        {
+          "id": "asd;lfkjasd;f",
+          "name": "I like cheese"
+        }
+      ]
+    }
   }
 }
