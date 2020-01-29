@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const Profile = ({}) => {
+const Profile = () => {
   return (
     <div>
       <div>
@@ -15,8 +15,8 @@ const Profile = ({}) => {
       </div>
     </div>
   );
-}
+};
 
-Profile.propTypes = {}
+Profile.propTypes = {};
 
 export default Profile;

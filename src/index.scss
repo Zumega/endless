@@ -1,3 +1,5 @@
+@import "./scss/variables";
+@import "./scss/grid";
 /* SETTINGS
 ==============================================*/
 @viewport {
@@ -85,7 +87,7 @@ img {
 }
 textarea {
   resize: none;
-  padding: 5px;
+  padding: $size / 2;
 }
 
 .clear:after {clear: both;content: '';display: block;font-size: 0;line-height: 0;visibility: hidden;width: 0;height: 0}
@@ -107,11 +109,11 @@ body {
 }
 p {
   line-height: 1.5;
-  margin: 0 0 20px 0;
+  margin: 0 0 $size * 2 0;
 
   &:before {
     content: "";
-    padding: 0 0 0 20px;
+    padding: 0 0 0 $size * 2;
   }
 
   &.basic {
@@ -152,8 +154,8 @@ button {
   color: #fff;
   font-weight: bold;
   border: 1px solid #000;
-  border-radius: 6px;
-  padding: 3px 10px;
+  border-radius: $size / 2;
+  padding: $size * 3 $size;
   cursor: pointer;
 
   &:hover {

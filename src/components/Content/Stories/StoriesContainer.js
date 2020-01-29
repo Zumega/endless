@@ -1,60 +1,35 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
-import './Stories.css';
+import './Stories.scss';
 import GenresContainer from './Genres/GenresContainer';
 import Stories from './Genres/Stories/Stories';
 import AuthorsContainer from './Authors/AuthorsContainer';
 import { simpleString } from '../../Utility/Utilities';
 
-class StoriesContainer extends Component {
-  constructor(props) {
-    super(props);
+const StoriesContainer = ({genres, stories, authorsData}) => {
+  const [genre, setGenre] = useState(null);
+  const [story, setStory] = useState(null);
 
-    this.state = {
-      genres: props.genres,
-      genre: null,
-      stories: props.stories,
-      story: null,
-      authors: props.authorsData
-    };
+  const handleGenre = genre => {
+    setGenre(genre);
+    setStory(stories[simpleString(genre)])
+  };
 
-    this.handleGenre = this.handleGenre.bind(this);
-  }
-
-  handleGenre(genre) {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        genre: genre,
-        story: this.state.stories[simpleString(genre)]
-      }
-    });
-  }
-
-  render() {
-    const {
-      genres,
-      genre,
-      story,
-      authors
-    } = this.state;
-
-    return (
-      <div>
-        <div>
-          <GenresContainer genres={genres} handleGenre={this.handleGenre} />
-          {
-            story && story.length > 0 && <Stories genre={genre} stories={story} />
-          }
-        </div>
+  return (
+    <div className="">
+      <div className="">
+        <GenresContainer genres={genres} handleGenre={handleGenre} />
         {
-          <AuthorsContainer authors={authors} />
+          story && story.length > 0 && <Stories genre={genre} stories={story} />
         }
       </div>
-    );
-  }
-}
+      {
+        <AuthorsContainer data={authorsData} />
+      }
+    </div>
+  );
+};
 
-StoriesContainer.propTypes = {}
+// StoriesContainer.propTypes = {};
 
 export default StoriesContainer;

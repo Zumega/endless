@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 import StoryGroup from './StoryGroup';
 
-class StoryGroups extends Component {
-  constructor(props) {
-    super(props);
-
-    this.groups = this.groups.bind(this);
-    this.genres = this.genres.bind(this);
-  }
-
-  genres(genres) {
+const StoryGroups = ({stories}) => {
+  const genres = genres => {
     let data = [];
 
     for (let key in genres) {
@@ -27,9 +20,9 @@ class StoryGroups extends Component {
     }
 
     return data;
-  }
+  };
   
-  groups(stories) {
+  const groups = stories => {
     let data = [];
 
     for (let key in stories) {
@@ -39,7 +32,7 @@ class StoryGroups extends Component {
             <h4>{key}</h4> 
             <ul>
               {
-                this.genres(stories[key])
+                genres(stories[key])
               }
             </ul>
           </li>
@@ -52,16 +45,10 @@ class StoryGroups extends Component {
         {data}
       </ul> 
     );
-  }
+  };
 
-  render() {
-    const {
-      stories
-    } = this.props;
-
-    return this.groups(stories);
-  }
-}
+  return groups(stories);
+};
 
 StoryGroups.propType = {
   stories: PropTypes.shape({
@@ -74,6 +61,6 @@ StoryGroups.propType = {
       })
     ).isRequired
   }).isRequired
-}
+};
 
 export default StoryGroups;

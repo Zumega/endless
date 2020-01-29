@@ -1,0 +1,29 @@
+@import './variables';
+
+$mawWidth: $size * 100;
+
+.row {
+  display: flex;
+  flex-basis: 100%;
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+
+  [class*='cell-'],
+  [class*='oneOf-'] {
+    min-height: 1px;
+    flex-basis: $cell-width;
+    padding: 0 $size / 2;
+  }
+
+  @for $i from 1 through $cellCount {
+    .cell-#{$i} {
+      flex-basis: $cell-width * $i;
+    }
+
+    .oneOf-#{$i} {
+      flex-basis: 100% / $i;
+    }
+  }
+}

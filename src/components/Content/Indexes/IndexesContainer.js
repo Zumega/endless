@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import GenresContainer from '../Stories/Genres/GenresContainer';
 // import PropTypes from 'prop-types';
 
-class IndexesContainer extends Component {
+const IndexesContainer = ({ genres, handleGenre }) => {
+  // TODO needs a lot of work!
+  return <GenresContainer genres={genres} handleGenre={handleGenre} />;
+};
 
-  render() {
-    // TODO needs a lot of work!
-    return <GenresContainer genres={genres} handleGenre={this.handleGenre} />;
-  }
-}
-
-IndexesContainer.propTypes = {}
+IndexesContainer.propTypes = {};
 
 export default IndexesContainer;

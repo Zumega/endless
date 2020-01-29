@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { simpleString } from '../../../../Utility/Utilities';
 
-
 const Stories = ({ genre, stories }) => {
   return (
-    <div>
+    <div className="">
       <h2>{genre} Stories:</h2>
       <ul>
         {
@@ -20,7 +19,7 @@ const Stories = ({ genre, stories }) => {
       </ul>
     </div>
   );
-}
+};
 
 Stories.propTypes = {
   genre: PropTypes.string.isRequired,
@@ -31,6 +30,6 @@ Stories.propTypes = {
       blurb: PropTypes.string.isRequired
     }).isRequired
   )
-}
+};
 
 export default Stories;

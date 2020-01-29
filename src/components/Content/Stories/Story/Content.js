@@ -13,10 +13,10 @@ const Content = ({text}) => {
       }
     </div>
   );
-}
+};
 
 Content.propTypes = {
   text: PropTypes.arrayOf(PropTypes.string.isRequired)
-}
+};
 
 export default Content;

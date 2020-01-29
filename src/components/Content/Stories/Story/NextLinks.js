@@ -14,13 +14,13 @@ const NextLinks = ({ links }) => {
       }
     </ul>
   );
-}
+};
 
 NextLinks.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired
   }))
-}
+};
 
 export default NextLinks;

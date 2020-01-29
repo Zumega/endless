@@ -1,11 +1,5 @@
-.contentContainer {
-  width: 90%;
-  height: 100%;
-  display: block;
- 
-  section {
-    padding: 10px;
-    height: 100%;
-    background-color: yellowgreen;
-  }
+@import "../../scss/variables";
+
+.bodyContainer {
+  background: antiquewhite;
 }

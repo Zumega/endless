@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import "./Header.css";
+import "./Header.scss";
 
-class HeaderContainer extends Component {
-  render() {
-    return (
-      <header>
-        <h1>
-          <Link to="/">Endless Story</Link>
-        </h1>
-      </header>
-    );
-  }
-}
+const HeaderContainer = () => {
+  return (
+    <header className="row">
+      <h1 className="cell-24">
+        <Link to="/">Endless Story</Link>
+      </h1>
+    </header>
+  );
+};
 
 export default HeaderContainer;

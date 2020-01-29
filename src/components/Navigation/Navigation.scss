@@ -1,21 +1,5 @@
-.mainNavContainer {
-  display: block;
-  width: 10%;
- 
-  ul {
-    padding: 10px;
-    background: aquamarine;
+@import "../../scss/variables";
 
-    li {
-      line-height: 2;
-
-      .active {
-        background: red;
-        color: #fff;
-        font-weight: bold;
-        cursor: text;
-        text-decoration: none;
-      }
-    }
-  }
+nav {
+  background: #7db9e8;
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import PropTypes from 'prop-types';
 
 const UserName = ({
@@ -11,11 +11,11 @@ const UserName = ({
       <input type="submit" value="Next" />
     </div>
   );
-}
+};
 
 UserName.propTypes = {
   password: PropTypes.string,
   handleUserNameChange: PropTypes.func.isRequired
-}
+};
 
 export default UserName;

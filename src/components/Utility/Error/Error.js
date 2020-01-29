@@ -1,5 +1,5 @@
 import React from 'react';
-import './Error.css';
+import './Error.scss';
 
 const ErrorHandling = ({error}) => {
   console.log(error);
@@ -8,6 +8,6 @@ const ErrorHandling = ({error}) => {
       {error}
     </div>
   );
-}
+};
 
 export default ErrorHandling;

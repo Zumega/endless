@@ -1,31 +1,26 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import HeaderContainer from './components/Header/HeaderContainer';
 import NavContainer from './components/Navigation/NavContainer';
 import ContentContainer from './components/Content/ContentContainer';
 import './components/Utility/Services';
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
+  // const [error, setError] = useState(null);
+  const error = '';
 
-    this.state = {
-      error: null
-    }
-  }
-
-  render() {
-    return (
-      <Router>
-        <div>
-          <HeaderContainer />
+  return (
+    <Router>
+      <div className="mainContainer row wrap">
+        <HeaderContainer />
+        <div className="navBodyContainer row">
           <NavContainer />
-          <ContentContainer error={this.state.error} />
+          <ContentContainer error={error} />
         </div>
-      </Router>
-    );
-  }
-}
+      </div>
+    </Router>
+  );
+};
 
 export default App;

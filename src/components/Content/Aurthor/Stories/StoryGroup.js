@@ -6,17 +6,17 @@ const StoryGroup = ({stories}) => {
     <ul>
       {
         stories.map((story, k) => (
-          <li key={k}>
+          <li key={story.name}>
             {story.name}
           </li>
         ))
       }
     </ul>
   );
-}
+};
 
 StoryGroup.propTypes = {
   stories: PropTypes.array.isRequired
-}
+};
 
 export default StoryGroup;

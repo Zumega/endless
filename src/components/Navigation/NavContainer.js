@@ -1,33 +1,26 @@
-import React, { Component } from 'react';
-import './Navigation.css';
+import React, { useState, useEffect }  from 'react';
+import './Navigation.scss';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
-class NavContainer extends Component {
-  constructor() {
-    super();
+const NavContainer = () => {
+  const [menu, setMenu] = useState(null);
 
-    this.state = {
-      menu: null
-    }
+  useEffect(() => {
+    if (menu) return;
 
     axios.get('api/constants.json')
       .then(response => {
-        this.setState(prevState => ({
-          ...prevState,
-          menu: response.data
-        }));
+        setMenu(response.data);
       })
       .catch(error => {
         console.log(error, 'needs universal error handling');
       });
+  }, [menu]);
 
-    this.handleMenu = this.handleMenu.bind(this);
-  }
-
-  handleMenu () {
-    if (this.state.menu) {
-      return this.state.menu.map(data => (
+  const handleMenu = () => {
+    if (menu) {
+      return menu.map(data => (
           <li key={data.id}>
             <NavLink to={'/' + data.url} activeClassName="active">{data.text}</NavLink>
           </li>
@@ -36,19 +29,17 @@ class NavContainer extends Component {
 
     // TODO: make better loading message
     return <span>LOADING</span>
-  }
+  };
 
-  render() {
-    return (
-      <nav className="mainNavContainer left">
-        <ul>
-          { this.handleMenu() }
-        </ul>
-      </nav>
-    );
-  }
-}
+  return (
+    <nav className="cell-4">
+      <ul>
+        { handleMenu() }
+      </ul>
+    </nav>
+  );
+};
 
-NavContainer.propType = {}
+NavContainer.propType = {};
 
 export default NavContainer;

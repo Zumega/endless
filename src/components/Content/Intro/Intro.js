@@ -9,7 +9,7 @@ const Intro = ({ data, bbc }) => {
       <p className="basic">{data.byLine}</p>
     </div>
   );
-}
+};
 
 Intro.propTypes = {
   data: PropTypes.shape({
@@ -17,6 +17,6 @@ Intro.propTypes = {
     byLine: PropTypes.string
   }).isRequired,
   bbc: PropTypes.func.isRequired
-}
+};
 
 export default Intro;
