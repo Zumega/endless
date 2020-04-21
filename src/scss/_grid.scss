@@ -1,29 +1,57 @@
 @import './variables';
 
-$mawWidth: $size * 100;
+.container {
+  min-width: 300px;
+  width: 100%;
+  padding: 0;
 
-.row {
-  display: flex;
-  flex-basis: 100%;
-
-  &.wrap {
-    flex-wrap: wrap;
+  & * {
+    box-sizing: border-box;
   }
 
-  [class*='cell-'],
-  [class*='oneOf-'] {
-    min-height: 1px;
-    flex-basis: $cell-width;
-    padding: 0 $size / 2;
-  }
+  .row {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
 
-  @for $i from 1 through $cellCount {
-    .cell-#{$i} {
-      flex-basis: $cell-width * $i;
+    &::before {
+      content: '';
+      display: table;
+      clear: both;
     }
 
-    .oneOf-#{$i} {
-      flex-basis: 100% / $i;
+    &::after {
+      @extend ::before;
+    }
+
+    [class*='col-'],
+    [class*='oneOf-'] {
+      float: left;
+      min-height: 1px;
+      width: $col-width;
+      padding: 0 $size / 2;
+    }
+
+    &.max {
+      max-width: 100%;
+    }
+
+    .alpha {
+      padding-left: 0;
+    }
+
+    .omega {
+      padding-right: 0;
+    }
+
+    @for $i from 1 through $cols {
+      .col-#{$i} {
+        width: ($col-width * $i);
+      }
+
+      //.oneOf-#{$i} {
+      //  width: 100% / $i;
+      //}
     }
   }
 }

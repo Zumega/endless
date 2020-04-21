@@ -1,4 +1,23 @@
+//@import './fonts';
+// $fontFamily: 'Rammetto One', sans-serif;
+//$fontFamily: 'Permanent Marker', sans-serif;
+
 // sizes
+$cols: 24;
+$col-width: (100% / $cols);
+$fontSize: 1em;
 $size: 12px;
-$cellCount: 24;
-$cell-width: 4.16666666666666%;
+$zIndex: 100;
+
+// colors
+$white: #fff;
+$black: #000;
+
+$primaryColor: #39f;
+$secondaryColor: adjust-hue($primaryColor, 10%);
+$triadicColor: adjust-hue($secondaryColor, 20%);
+$tetradicColor: adjust-hue($triadicColor, 30%);
+
+$font: $black;
+$fontSecondary: lighten($font, 30%);
+$fontTertiary: lighten($fontSecondary, 30%);

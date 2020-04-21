@@ -1,10 +1,23 @@
-import React  from 'react';
-import GenresContainer from '../Stories/Genres/GenresContainer';
-// import PropTypes from 'prop-types';
+import React, { useState }  from 'react';
+import GenresContainer from '../Genres/GenresContainer';
+import Stories from "../Stories/Stories";
+import {simpleString} from "../../Utility/Utilities";
 
-const IndexesContainer = ({ genres, handleGenre }) => {
-  // TODO needs a lot of work!
-  return <GenresContainer genres={genres} handleGenre={handleGenre} />;
+const IndexesContainer = ({ genres, stories }) => {
+  const [genre, setGenre] = useState(null);
+  const [story, setStory] = useState(null);
+
+  const handleGenre = genre => {
+    setGenre(genre);
+    setStory(stories[simpleString(genre)])
+  };
+
+  return <>
+    <GenresContainer genres={genres} handleGenre={handleGenre} />
+    {
+      story && story.length > 0 && <Stories genre={genre} stories={story} />
+    }
+  </>;
 };
 
 IndexesContainer.propTypes = {};

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import './Author.scss';
 
-import Profile from './Profile/Profile';
-import StoryGroups from './Stories/StoryGroups';
+import AurthorProfile from '../AurthorProfile/AurthorProfile';
+import StoryGroups from '../AurthorStories/StoryGroups';
 
 const AuthorContainer = (props) => {
   const [author, setAuthor] = useState(null);
@@ -21,7 +21,7 @@ const AuthorContainer = (props) => {
 
   return author && (<>
     <h3>{author.name}</h3>
-    <Profile author={author} />
+    <AurthorProfile author={author} />
     <hr />
     <StoryGroups stories={author.stories} />
   </>);

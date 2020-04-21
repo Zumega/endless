@@ -1,0 +1,28 @@
+{
+  "fantacy": [
+    {
+      "id": "A1",
+      "genre": "Fantacy",
+      "name": "test",
+      "blurb": "this is a test"
+    }
+  ],
+  "scifi": [],
+  "romance": [],
+  "horror": [],
+  "fiction": [
+    {
+      "id": "B1",
+      "genre": "Fiction",
+      "name": "test23",
+      "blurb": "this is a test",
+      "children": []
+    },
+    {
+      "id": "B2",
+      "genre": "Fiction",
+      "name": "monkey",
+      "blurb": "this is a test"
+    }
+  ]
+}

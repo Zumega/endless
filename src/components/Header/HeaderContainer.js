@@ -5,7 +5,7 @@ import "./Header.scss";
 const HeaderContainer = () => {
   return (
     <header className="row">
-      <h1 className="cell-24">
+      <h1 className="col-24">
         <Link to="/">Endless Story</Link>
       </h1>
     </header>

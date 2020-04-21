@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className="mainContainer row wrap">
+      <div className="mainContainer container">
         <HeaderContainer />
         <div className="navBodyContainer row">
           <NavContainer />

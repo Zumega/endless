@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Chance from 'chance';
 
 export const simpleString = text => {
   return text.toLowerCase().replace(/[^a-z0-9]/g, "-");
@@ -38,4 +39,9 @@ export const bcc = (text, key) => {
   };
 
   return forEach();
+};
+
+export const guid = () => {
+  const c = new Chance();
+  return c.guid();
 };
