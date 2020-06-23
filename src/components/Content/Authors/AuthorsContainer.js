@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import {Context} from "../../../store/Store";
+import Actions from "../../../store/Actions";
+
 import './Authors.scss';
 import AuthorInitial from './AuthorInitial';
 import AuthorByInitial from './AuthorByInitial';
 
-const AuthorsContainer = ({data}) => {
-  const [selectedInitial, setSelectedInitial] = useState(null);
-  // const [authors, setAuthors] = useState(data.letters);
-  const authors = data.letters;
-  // const [allAuthors, setAllAuthors] = useState(null);
-  // const [activeInitials, setActiveInitials] = useState(data.active);
-  const activeInitials = data.active;
+const AuthorsContainer = () => {
+  const [{authors, selectedInitial}, dispatch] = useContext(Context);
+  const activeInitials = authors.active;
 
   const handleInitialClick = id => {
-    setSelectedInitial(id);
-    // setAllAuthors(null);
+    dispatch({type: Actions.INITIAL, payload: id})
   };
 
   const buildList = () => {
@@ -45,12 +42,6 @@ const AuthorsContainer = ({data}) => {
     return data;
   };
 
-  const getAuthors = initial => {
-    if (authors) return authors[initial];
-
-    return null;
-  };
-
   return (
     <div className="row">
       <div className="container">
@@ -58,7 +49,7 @@ const AuthorsContainer = ({data}) => {
         <AuthorInitial buildList={buildList} />
         <div className="row">
           {
-            selectedInitial && <AuthorByInitial authors={getAuthors(selectedInitial)} initial={selectedInitial} />
+            selectedInitial && <AuthorByInitial />
           }
         </div>
       </div>

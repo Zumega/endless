@@ -1,8 +1,15 @@
-import React  from 'react';
+import React, { useContext } from 'react';
+import Actions from "../../../store/Actions";
+import {Context} from "../../../store/Store";
 import './Genres.scss'
-// import PropTypes from 'prop-types';
 
-const GenresContainer = ({genres, handleGenre}) => {
+const GenresContainer = () => {
+  const [{genres}, dispatch] = useContext(Context);
+
+  const handleGenre = genre => {
+    dispatch({type: Actions.GENRE, payload: genre});
+  };
+
   return (
     <div className="genresContainer col-10">
       <h2>Genres:</h2>
@@ -18,12 +25,5 @@ const GenresContainer = ({genres, handleGenre}) => {
     </div>
   );
 };
-
-// GenresContainer.propTypes = {
-//   genres: PropTypes.arrayOf(
-//     PropTypes.string.isRequired
-//   ).isRequired,
-//   handleGenre: PropTypes.func.isRequired
-// };
 
 export default GenresContainer;

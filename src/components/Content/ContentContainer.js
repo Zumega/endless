@@ -1,58 +1,55 @@
-// import React, { useState, useEffect }  from 'react';
-import React  from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext }  from 'react';
+import Actions from '../../store/Actions';
+import { Context } from '../../store/Store';
 import { Route  } from 'react-router-dom';
-import { bcc } from '../Utility/Utilities';
+
 import './Content.scss';
-import ErrorHandling from '../Utility/Error/Error';
+
 import Intro from './Intro/Intro';
-import IndexesContainer from './Indexes/IndexesContainer';
 import StoriesContainer from './Stories/StoriesContainer';
+// import IndexesContainer from './Indexes/IndexesContainer';
 // import AuthorContainer from './Aurthor/AuthorContainer';
 // import LibraryCardContianer from './LibraryCard/LibraryCardContainer';
-import Story from './Story/Story';
+// import Story from './Story/Story';
+// import TmpSubmit from './TmpSubmit/TmpSubmit';
+// import ErrorHandling from '../Utility/Error/Error';
 
-import intro from '../../data/intro';
-import genres from '../../data/genres';
-// import story from '../../data/story';
-import stories from '../../data/stories';
-import authors from '../../data/authors';
-// import libraryCard from '../../data/libraryCard';
+// import get from 'lodash/get';
 
-import get from 'lodash/get';
+const ContentContainer = () => {
+  const [state] = useContext(Context);
 
-
-const ContentContainer = ({ error }) => {
-  const handleBBC = (text, key) => {
-    return bcc(text, key);
-  };
-
-  const handleDataReady = (dataId, props = null) => {
+  const handleDataReady = dataId => {
     switch (dataId) {
       case 'intro':
-        return intro && <Intro data={intro} bbc={handleBBC} />;
+        return <Intro />;
       case 'stories':
-        return <StoriesContainer genres={genres} stories={stories} authorsData={authors} />;
+        return <StoriesContainer />;
       case 'indexes':
-        return <IndexesContainer genres={genres} handleGenre={() => console.log('things')} />;
-      // case 'submit':
-      //   return <div>SUBMIT</div>;
+        // return <IndexesContainer genres={genres} handleGenre={() => console.log('things')} />;
+      case 'submit':
+        // return <TmpSubmit />;
       case 'libraryCard':
-        return <LibraryCardContianer data={libraryCard} />;
+        // return <LibraryCardContianer data={libraryCard} />;
       // case 'author':
       //   return <AuthorContainer {...props} />;
       case 'story':
-        return <Story storyId={get(props, 'match.params.id', null)} />;
-      // default:
+        // TODO: this bit here
+        // return <Story storyId={get(props, 'match.params.id', null)} />;
+      default:
       //   // TODO: make better loading message
       //   return <span>LOADING</span>;
     }
   };
 
+  const setClassName = () => {
+    return 'bodyContainer ' + (state[Actions.FULL_SCREEN] ? 'col-24' : 'col-20') +  ' alpha omega';
+  };
+
   return (
-    <div className="bodyContainer col-20 alpha omega">
+    <div className={setClassName()}>
       {
-        error && <ErrorHandling error={error} />
+        // error && <ErrorHandling error={error} />
       }
       <section className="container">
         <Route exact={true} path="/" render={() => handleDataReady('intro')} />
@@ -65,10 +62,6 @@ const ContentContainer = ({ error }) => {
       </section>
     </div>
   );
-};
-
-ContentContainer.propType = {
-  error: PropTypes.object.isRequired
 };
 
 export default ContentContainer;

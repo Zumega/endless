@@ -1,35 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import {Context} from "../../../store/Store";
 import { Link } from 'react-router-dom';
+
 import { simpleString } from '../../Utility/Utilities';
 
-const Stories = ({ genre, stories }) => {
-  return (
-    <div className="col-14">
-      <h2>{genre} Stories:</h2>
-      <ul>
-        {
-          stories.map((story) => (
-            <li key={story.id}>
-              <Link to={'/stories/' + simpleString(genre) + '/' + story.id}>{story.name}</Link>
-              <p>{story.blurb}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  );
-};
+const Stories = () => {
+  const [{stories, genre}] = useContext(Context);
+  const genreStories = stories[simpleString(genre)];
 
-Stories.propTypes = {
-  genre: PropTypes.string.isRequired,
-  stories: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      blurb: PropTypes.string.isRequired
-    }).isRequired
-  )
+  return genreStories && genreStories.length > 0 ?
+    (
+      <div className="col-14">
+        <h2>{genre} Stories:</h2>
+        <ul>
+          {
+            genreStories.map((story) => (
+              <li key={story.id}>
+                <Link to={'/stories/' + simpleString(genre) + '/' + story.id}>{story.name}</Link>
+                <p>{story.blurb}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    ) : null;
 };
 
 export default Stories;

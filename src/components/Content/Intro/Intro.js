@@ -1,22 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { Context } from '../../../store/Store';
 
-const Intro = ({ data, bbc }) => {
+import {bbc} from '../../Utility/Utilities';
+
+const Intro = () => {
+  const [{intro}] = useContext(Context);
+
   return (
     <div>
-      {data.text.map((txt, key) => bbc(txt, key)) }
+      {intro.text.map((txt, key) => bbc(txt, key)) }
       <br/><br/><br/><br/>
-      <p className="basic">{data.byLine}</p>
+      <p className="basic">{intro.byLine}</p>
     </div>
   );
-};
-
-Intro.propTypes = {
-  data: PropTypes.shape({
-    text: PropTypes.array.isRequired,
-    byLine: PropTypes.string
-  }).isRequired,
-  bbc: PropTypes.func.isRequired
 };
 
 export default Intro;

@@ -1,11 +1,19 @@
-import React, { useState }  from 'react';
-import './Navigation.scss';
+import React, { useContext }  from 'react';
+import {Context} from '../../store/Store';
 import { NavLink } from 'react-router-dom';
-import menu from '../../data/menu';
+
+import './Navigation.scss';
+
 
 const NavContainer = () => {
+  const [{menu, fullscreen}] = useContext(Context);
+
+  const setClassName = () => {
+    return (fullscreen ? 'col-0' : 'col-4') +  ' alpha omega';
+  };
+
   return (
-    <nav className="col-4 alpha omega">
+    <nav className={setClassName()}>
       <ul>
         {
           menu.map(data => (
@@ -18,7 +26,5 @@ const NavContainer = () => {
     </nav>
   );
 };
-
-NavContainer.propType = {};
 
 export default NavContainer;
