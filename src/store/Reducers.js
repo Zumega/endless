@@ -1,6 +1,6 @@
 import Actions from './Actions';
 
-const Reducer = (state, {type, payload}) => {
+const Reducers = (state, {type, payload}) => {
   setTimeout(() => {console.log(state)}, 10);
 
   switch (type) {
@@ -27,4 +27,4 @@ const Reducer = (state, {type, payload}) => {
   }
 };
 
-export default Reducer;
+export default Reducers;

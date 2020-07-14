@@ -1,5 +1,6 @@
-import React, {createContext, useReducer} from 'react';
-import Reducer from './Reducer';
+import
+  React, {createContext, useReducer} from 'react';
+import Reducer from './Reducers';
 import Actions from './Actions';
 
 import menu from '../data/menu';

@@ -5,6 +5,7 @@ import Actions from "../../../store/Actions";
 import './Authors.scss';
 import AuthorInitial from './AuthorInitial';
 import AuthorByInitial from './AuthorByInitial';
+import MemoContainer from '../../MemoContainer';
 
 const AuthorsContainer = () => {
   const [{authors, selectedInitial}, dispatch] = useContext(Context);
@@ -43,17 +44,19 @@ const AuthorsContainer = () => {
   };
 
   return (
-    <div className="row">
-      <div className="container">
-        <h2>Authors:</h2>
-        <AuthorInitial buildList={buildList} />
-        <div className="row">
-          {
-            selectedInitial && <AuthorByInitial />
-          }
+    <MemoContainer data={[authors, selectedInitial]}>
+      <div className="row">
+        <div className="container">
+          <h2>Authors:</h2>
+          <AuthorInitial buildList={buildList} />
+          <div className="row">
+            {
+              selectedInitial && <AuthorByInitial />
+            }
+          </div>
         </div>
       </div>
-    </div>
+    </MemoContainer>
   );
 };
 

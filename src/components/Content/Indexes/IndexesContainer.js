@@ -1,5 +1,4 @@
-import React, { useContext }  from 'react';
-import {Context} from '../../../store/Store';
+import React   from 'react';
 
 import GenresContainer from '../Genres/GenresContainer';
 import Stories from "../Stories/Stories";
