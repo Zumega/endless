@@ -1,16 +1,16 @@
-import React, { useContext }  from 'react';
-import {Context} from '../../store/Store';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import useStore from "../Utility/Hooks/useStore";
 import './Navigation.scss';
+
 import MemoContainer from '../MemoContainer';
 
 const NavContainer = () => {
-  const [{menu, fullscreen}] = useContext(Context);
+  const {menu, fullScreen} = useStore('NavContainer');
 
   return (
-    <MemoContainer data={[menu, fullscreen]}>
-      <nav className={(fullscreen ? 'col-0' : 'col-4') +  ' alpha omega'}>
+    <MemoContainer data={[menu, fullScreen]}>
+      <nav className={(fullScreen ? 'col-0' : 'col-4') +  ' alpha omega'}>
         <ul>
           {
             menu.map(data => (

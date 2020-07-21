@@ -1,52 +1,48 @@
-import React, { useEffect, useContext } from 'react';
-import {Context} from '../../../store/Store';
+import React, { useEffect } from 'react';
 import Actions from '../../../store/Actions';
+import useStore from "../../Utility/Hooks/useStore";
 
 import { Link } from 'react-router-dom';
+import {guid} from "../../Utility/Utilities";
+
 import Content from './Content';
 import NextLinks from './NextLinks';
-import {guid} from "../../Utility/Utilities";
 import MemoContainer from '../../MemoContainer';
+import StoryActions from "../StoryActions/StoryActions";
 
-const Story = ({storyId}) => {
-  const [{story}, dispatch] = useContext(Context);
+import DATA from '../../../data/api/fantasy';
+
+const Story = ({genreId, storyId}) => {
+  const {story, dispatch} = useStore('Story');
 
   useEffect(() => {
     if (storyId) {
-      console.log(guid());
-      fetch(`/api/story_${storyId}.json`)
-        .then(response => response.json())
-        .then(response => {
-          dispatch({type: Actions.STORY, payload: response})
-        });
+      // fetch(`/api/${genreId}/{storyId}.json`)
+      //   .then(response => response.json())
+      //   .then(response => {
+      //     dispatch({type: Actions.STORY, payload: response})
+      //   });
+
+      dispatch({type: Actions.STORY, payload: DATA.find(story => story.id === storyId)});
     }
   }, [storyId]);
-
-  const handleFullScreen = () => {
-    dispatch({type: Actions.FULL_SCREEN, payload: !state[Actions.FULL_SCREEN]});
-  };
 
   return (
     <MemoContainer data={[story]}>
       <>
         {
-          story && <h4 className="row">{story.title}</h4>
+          story && <h2 className="row">{story.title}</h2>
         }
-        <div className="row">
-          {/* Options for reader and editor */}
-          <ul className="menu">
-            <li className="col-4" onClick={handleFullScreen}>Full Screen</li>
-            <li className="col-4">Flag</li>
-            <li className="col-4">Thumb Up</li>
-            <li className="col-4">Thumb Down</li>
-          </ul>
-        </div>
+        <StoryActions />
         {
           story &&
           (story.content.length >= 1) &&
           <>
             <Content text={story.content} />
-            <div className="row"><Link to={'./' + story.meta.parent.id}>Back</Link></div>
+            {
+              story.meta.parent.id &&
+              <div className="row"><Link to={'./' + story.meta.parent.id}>Back</Link></div>
+            }
             <NextLinks links={story.meta.children} />
           </>
         }

@@ -1,25 +1,24 @@
-import React, { useContext }  from 'react';
-import Actions from '../../store/Actions';
-import { Context } from '../../store/Store';
+import React from 'react';
 import { Route  } from 'react-router-dom';
+import useStore from "../Utility/Hooks/useStore";
 
 import './Content.scss';
 
 import Intro from './Intro/Intro';
 import StoriesContainer from './Stories/StoriesContainer';
+import Story from './Story/Story';
 // import IndexesContainer from './Indexes/IndexesContainer';
 // import AuthorContainer from './Aurthor/AuthorContainer';
 // import LibraryCardContianer from './LibraryCard/LibraryCardContainer';
-// import Story from './Story/Story';
 // import TmpSubmit from './TmpSubmit/TmpSubmit';
 // import ErrorHandling from '../Utility/Error/Error';
 
-// import get from 'lodash/get';
+import get from 'lodash/get';
 
 const ContentContainer = () => {
-  const [state] = useContext(Context);
+  const {fullScreen} = useStore('ContentContainer');
 
-  const handleDataReady = dataId => {
+  const handleDataReady = (dataId, props) => {
     switch (dataId) {
       case 'intro':
         return <Intro />;
@@ -34,8 +33,7 @@ const ContentContainer = () => {
       // case 'author':
       //   return <AuthorContainer {...props} />;
       case 'story':
-        // TODO: this bit here
-        // return <Story storyId={get(props, 'match.params.id', null)} />;
+        return <Story genreId={get(props, 'match.params.genre', null)} storyId={get(props, 'match.params.id', null)} />;
       default:
       //   // TODO: make better loading message
       //   return <span>LOADING</span>;
@@ -43,7 +41,7 @@ const ContentContainer = () => {
   };
 
   const setClassName = () => {
-    return 'bodyContainer ' + (state[Actions.FULL_SCREEN] ? 'col-24' : 'col-20') +  ' alpha omega';
+    return 'bodyContainer ' + (fullScreen ? 'col-24' : 'col-20') +  ' alpha omega';
   };
 
   return (

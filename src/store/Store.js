@@ -3,6 +3,8 @@ import
 import Reducer from './Reducers';
 import Actions from './Actions';
 
+import user from '../data/tmp_user';
+
 import menu from '../data/menu';
 import intro from '../data/intro';
 import genres from '../data/genres';

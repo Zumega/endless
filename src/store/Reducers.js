@@ -1,8 +1,6 @@
 import Actions from './Actions';
 
 const Reducers = (state, {type, payload}) => {
-  setTimeout(() => {console.log(state)}, 10);
-
   switch (type) {
     case Actions.FULL_SCREEN: {
       return {
