@@ -1,14 +1,10 @@
-import React, { useContext } from 'react';
-import {Context} from "../../../store/Store";
+import React from 'react';
+import useStore from "../../Utility/Hooks/useStore";
+import MemoContainer from "../../MemoContainer";
 import Actions from "../../../store/Actions";
 
-import './Authors.scss';
-import AuthorInitial from './AuthorInitial';
-import AuthorByInitial from './AuthorByInitial';
-import MemoContainer from '../../MemoContainer';
-
-const AuthorsContainer = () => {
-  const [{authors, selectedInitial}, dispatch] = useContext(Context);
+const AuthorInitial = () => {
+  const {authors, dispatch} = useStore('AuthorInitial');
   const activeInitials = authors.active;
 
   const handleInitialClick = id => {
@@ -42,22 +38,15 @@ const AuthorsContainer = () => {
 
     return data;
   };
-
   return (
-    <MemoContainer data={[authors, selectedInitial]}>
+    <MemoContainer data={[authors]}>
       <div className="row">
-        <div className="container">
-          <h2>Authors:</h2>
-          <AuthorInitial buildList={buildList} />
-          <div className="row">
-            {
-              selectedInitial && <AuthorByInitial />
-            }
-          </div>
-        </div>
+        <ul id="initialList" className="menu">
+          { buildList() }
+        </ul>
       </div>
     </MemoContainer>
   );
 };
 
-export default AuthorsContainer;
+export default AuthorInitial;

@@ -1,23 +1,17 @@
 import Actions from './Actions';
 
 const Reducers = (state, {type, payload}) => {
+  console.log('Reducers', type, payload);
+
   switch (type) {
-    case Actions.FULL_SCREEN: {
-      return {
-        ...state,
-        [Actions.FULL_SCREEN]: payload
-      }
-    }
+    case Actions.AUTHOR:
+    case Actions.FULL_SCREEN:
+    case Actions.GENRE:
+    case Actions.INITIAL:
     case Actions.STORY: {
       return {
         ...state,
-        [Actions.STORY]: payload
-      }
-    }
-    case Actions.GENRE: {
-      return {
-        ...state,
-        [Actions.GENRE]: payload
+        [type]: payload
       }
     }
     default:

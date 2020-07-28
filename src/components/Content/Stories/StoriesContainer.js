@@ -1,8 +1,8 @@
 import React from 'react';
 import './Stories.scss';
 
-import AuthorsContainer from '../Authors/AuthorsContainer';
-import IndexesContainer from "../Indexes/IndexesContainer";
+import Authors from '../Authors/Authors';
+import Indexes from "../Indexes/Indexes";
 
 const StoriesContainer = () => {
   return (
@@ -10,11 +10,11 @@ const StoriesContainer = () => {
       <div className="row">
         <div className="container">
           <div className="row">
-            <IndexesContainer />
+            <Indexes />
           </div>
         </div>
       </div>
-      <AuthorsContainer />
+      <Authors />
     </>
   );
 };

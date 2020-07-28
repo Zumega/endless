@@ -1,22 +1,26 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import MemoContainer from "../../MemoContainer";
+import useStore from "../../Utility/Hooks/useStore";
 
 const AurthorProfile = () => {
+  const {author} = useStore('AurthorProfile');
+
   return (
-    <div>
+    <MemoContainer data={[author]}>
       <div>
-        Profile image
+        <div>WHATZ</div>
+        <div>
+          Profile image
+        </div>
+        <div>
+          <ul>
+            <li>bits</li>
+            <li>stuff</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <ul>
-          <li>bits</li>
-          <li>stuff</li>
-        </ul>
-      </div>
-    </div>
+    </MemoContainer>
   );
 };
-
-AurthorProfile.propTypes = {};
 
 export default AurthorProfile;

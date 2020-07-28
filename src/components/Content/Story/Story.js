@@ -3,7 +3,7 @@ import Actions from '../../../store/Actions';
 import useStore from "../../Utility/Hooks/useStore";
 
 import { Link } from 'react-router-dom';
-import {guid} from "../../Utility/Utilities";
+// import {guid} from "../../Utility/Utilities";
 
 import Content from './Content';
 import NextLinks from './NextLinks';
@@ -25,7 +25,7 @@ const Story = ({genreId, storyId}) => {
 
       dispatch({type: Actions.STORY, payload: DATA.find(story => story.id === storyId)});
     }
-  }, [storyId]);
+  }, [storyId, dispatch]);
 
   return (
     <MemoContainer data={[story]}>

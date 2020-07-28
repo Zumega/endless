@@ -1,17 +1,20 @@
-import React, { useContext } from 'react';
-import { Context } from '../../../store/Store';
+import React from 'react';
 
 import {bbc} from '../../Utility/Utilities';
+import useStore from "../../Utility/Hooks/useStore";
+import MemoContainer from "../../MemoContainer";
 
 const Intro = () => {
-  const [{intro}] = useContext(Context);
+  const {intro} = useStore('Intro');
 
   return (
-    <div>
-      {intro.text.map((txt, key) => bbc(txt, key)) }
-      <br/><br/><br/><br/>
-      <p className="basic">{intro.byLine}</p>
-    </div>
+    <MemoContainer data={[intro]}>
+      <div>
+        {intro.text.map((txt, key) => bbc(txt, key)) }
+        <br/><br/><br/><br/>
+        <p className="basic">{intro.byLine}</p>
+      </div>
+    </MemoContainer>
   );
 };
 

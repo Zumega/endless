@@ -4,39 +4,42 @@ import useStore from "../Utility/Hooks/useStore";
 
 import './Content.scss';
 
+import Author from './Aurthor/Author';
 import Intro from './Intro/Intro';
 import StoriesContainer from './Stories/StoriesContainer';
 import Story from './Story/Story';
+
 // import IndexesContainer from './Indexes/IndexesContainer';
-// import AuthorContainer from './Aurthor/AuthorContainer';
 // import LibraryCardContianer from './LibraryCard/LibraryCardContainer';
 // import TmpSubmit from './TmpSubmit/TmpSubmit';
 // import ErrorHandling from '../Utility/Error/Error';
 
-import get from 'lodash/get';
+import getOr from 'lodash/fp/getOr';
 
 const ContentContainer = () => {
   const {fullScreen} = useStore('ContentContainer');
 
   const handleDataReady = (dataId, props) => {
     switch (dataId) {
+      case 'author':
+        return <Author authorId={getOr(null, 'match.params.id', props)} />;
       case 'intro':
         return <Intro />;
       case 'stories':
         return <StoriesContainer />;
-      case 'indexes':
-        // return <IndexesContainer genres={genres} handleGenre={() => console.log('things')} />;
-      case 'submit':
-        // return <TmpSubmit />;
-      case 'libraryCard':
-        // return <LibraryCardContianer data={libraryCard} />;
-      // case 'author':
-      //   return <AuthorContainer {...props} />;
       case 'story':
-        return <Story genreId={get(props, 'match.params.genre', null)} storyId={get(props, 'match.params.id', null)} />;
+        return <Story genreId={getOr(null, 'match.params.genre', props)} storyId={getOr(null, 'match.params.id', props)} />;
+
+
+      // case 'indexes':
+      //   return <IndexesContainer genres={genres} handleGenre={() => console.log('things')} />;
+      // case 'submit':
+      //   return <TmpSubmit />;
+      // case 'libraryCard':
+      //   return <LibraryCardContianer data={libraryCard} />;
       default:
       //   // TODO: make better loading message
-      //   return <span>LOADING</span>;
+        return <span>LOADING</span>;
     }
   };
 

@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Actions from '../../../store/Actions';
-import {Context} from '../../../store/Store';
 import './Genres.scss'
 import MemoContainer from '../../MemoContainer';
+import useStore from "../../Utility/Hooks/useStore";
 
-const GenresContainer = () => {
-  const [{genres}, dispatch] = useContext(Context);
+const Genres = () => {
+  const {genres, dispatch} = useStore('GenresContainer');
 
   const handleGenre = genre => {
     dispatch({type: Actions.GENRE, payload: genre});
@@ -29,4 +29,4 @@ const GenresContainer = () => {
   );
 };
 
-export default GenresContainer;
+export default Genres;

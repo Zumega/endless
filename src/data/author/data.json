@@ -1,0 +1,33 @@
+[
+  {
+    "guid": "987645312",
+    "authorId": "walker-texas-typer",
+    "name": "Walker Texas Typer",
+    "about": {
+      "storyCount": 1
+    },
+    "stories": {
+      "live": {
+        "Fantasy": [
+          {
+            "id": "789654312",
+            "name": "woop toast"
+          },
+          {
+            "id": "0326546807",
+            "name": "Monkey Fart"
+          }
+        ]
+      },
+      "inEdit": {},
+      "inProgress": {
+        "Sci-Fi": [
+          {
+            "id": "asd;lfkjasd;f",
+            "name": "I like cheese"
+          }
+        ]
+      }
+    }
+  }
+]

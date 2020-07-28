@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import {Context} from '../../../store/Store';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { simpleString } from '../../Utility/Utilities';
 import MemoContainer from '../../MemoContainer';
+import useStore from "../../Utility/Hooks/useStore";
 
 const Stories = () => {
-  const [{stories, genre}] = useContext(Context);
+  const {stories, genre} = useStore('Stories');
   const genreStories = stories[simpleString(genre)];
 
   return (

@@ -1,8 +1,9 @@
 const Actions = {
+  AUTHOR: 'author',
   FULL_SCREEN: 'fullScreen',
-  STORY: 'story',
   GENRE: 'genre',
-  INITIAL: 'initial'
+  INITIAL: 'selectedInitial',
+  STORY: 'story',
 };
 
 export default Actions;

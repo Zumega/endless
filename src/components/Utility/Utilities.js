@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Chance from 'chance';
 
-export const simpleString = (text = '') => {
-  return text.toLowerCase().replace(/[^a-z0-9]/g, "-");
+export const simpleString = (text) => {
+  return (text || '').toLowerCase().replace(/[^a-z0-9]/g, "-");
 };
 
 export const markup = data => {
