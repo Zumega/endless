@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Context } from "../../../store/Store";
+import Actions from "../../../store/Actions";
 
 const useStore = componentId => {
   const [store, dispatch] = useContext(Context);
@@ -9,40 +10,47 @@ const useStore = componentId => {
 
   switch (componentId) {
     case 'Author':
-      data.author = store.author;
+      data[Actions.AUTHOR] = store[Actions.AUTHOR];
       break;
     case 'AurthorProfile':
-      data.author = store.author;
+      data[Actions.AUTHOR] = store[Actions.AUTHOR];
       break;
     case 'Intro':
       data.intro = store.intro;
       break;
     case 'HeaderContainer':
-      data.fullScreen = store.fullScreen;
+      data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
     case 'ContentContainer':
-      data.fullScreen = store.fullScreen;
+      data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
     case 'NavContainer':
       data.menu = store.menu;
-      data.fullScreen = store.fullScreen;
+      data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
     case 'Story':
-      data.story = store.story;
+      data[Actions.STORY] = store[Actions.STORY];
+      break;
+    case 'StoryActions':
+      data[Actions.STORY] = store[Actions.STORY];
+      data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
+      data[Actions.FLAG_STORY] = store[Actions.FLAG_STORY];
+      data[Actions.STORY_THUMB_UP] = store[Actions.STORY_THUMB_UP];
+      data[Actions.STORY_THUMB_DOWN] = store[Actions.STORY_THUMB_DOWN];
       break;
     case 'Stories':
       data.stories = store.stories;
-      data.genre = store.genre;
+      data[Actions.GENRE] = store[Actions.GENRE];
       break;
     case 'AuthorsContainer':
-      data.selectedInitial = store.selectedInitial;
+      data[Actions.INITIAL] = store[Actions.INITIAL];
       break;
     case 'AuthorInitial':
       data.authors = store.authors;
       break;
     case 'AuthorByInitial':
       data.authors = store.authors;
-      data.selectedInitial = store.selectedInitial;
+      data[Actions.INITIAL] = store[Actions.INITIAL];
       break;
     case 'GenresContainer':
       data.genres = store.genres;
@@ -50,6 +58,7 @@ const useStore = componentId => {
     default:
   }
 
+  // NULL out unused keys
   Object.keys(data).forEach(key => {
     data[key] = data[key] || null;
   });
