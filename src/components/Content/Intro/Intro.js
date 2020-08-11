@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {bbc} from '../../Utility/Utilities';
-import useStore from "../../Utility/Hooks/useStore";
+import useBaseStore from "../../Utility/Hooks/useBaseStore";
 import MemoContainer from "../../MemoContainer";
 
 const Intro = () => {
-  const {intro} = useStore('Intro');
+  const {intro} = useBaseStore('Intro');
 
   return (
     <MemoContainer data={[intro]}>

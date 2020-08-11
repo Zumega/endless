@@ -1,21 +1,28 @@
 import React  from 'react';
-import PropTypes from 'prop-types';
+import {string, func, bool} from 'prop-types';
 
 const UserName = ({
   userName, 
-  handleUserNameChange
+  handleUserNameChange,
+  showPassword
 }) => {
   return (
     <div>
       <input type="text" value={userName} onChange={handleUserNameChange} placeholder="Username" />
-      <input type="submit" value="Next" />
+      {!showPassword && <input type="submit" value="Next" />}
     </div>
   );
 };
 
+UserName.defaultProps = {
+  password: '',
+  showPassword: false,
+};
+
 UserName.propTypes = {
-  password: PropTypes.string,
-  handleUserNameChange: PropTypes.func.isRequired
+  password: string,
+  handleUserNameChange: func.isRequired,
+  showPassword: bool,
 };
 
 export default UserName;

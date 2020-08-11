@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
 import UserName from './UserName';
 import Password from './Password';
+import useStore from "../../Utility/Hooks/useStore";
+import MemoContainer from "../../MemoContainer";
+import Actions from "../../../store/Actions";
 
 const LibraryCard = () => {
+  const {libraryCard, dispatch} = useStore('LibraryCard');
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +20,7 @@ const LibraryCard = () => {
       return;
     }
 
-    console.log(userName + ' ' + password);
+    dispatch({type: Actions.LIBRARY_CARD, payload: userName+password});
   };
 
   const handleUserNameChange = event => {
@@ -29,17 +32,19 @@ const LibraryCard = () => {
   };
 
   return (
-    <form onSubmit={submitLibraryCard}>
-      <label>
-        Library Card
-      </label>
-      {
-        !showPassword && <UserName userName={userName} handleUserNameChange={handleUserNameChange} />
-      }
-      {
-        userName && showPassword && <Password password={password} handlePasswordChange={handlePasswordChange} />
-      }
-    </form>
+    <MemoContainer data={[libraryCard]}>
+      <form onSubmit={submitLibraryCard}>
+        <label>
+          Library Card
+        </label>
+        {
+          <UserName userName={userName} showPassword={showPassword} handleUserNameChange={handleUserNameChange} />
+        }
+        {
+          userName && showPassword && <Password password={password} handlePasswordChange={handlePasswordChange} />
+        }
+      </form>
+    </MemoContainer>
   );
 };
 

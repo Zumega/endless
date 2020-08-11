@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { simpleString } from '../../Utility/Utilities';
 import MemoContainer from "../../MemoContainer";
+import useBaseStore from "../../Utility/Hooks/useBaseStore";
 import useStore from "../../Utility/Hooks/useStore";
 import getOr from 'lodash/fp/getOr';
 
 const AuthorByInitial = () => {
-  const {authors, selectedInitial} = useStore('AuthorByInitial');
+  const {authors} = useBaseStore('AuthorByInitial');
+  const {selectedInitial} = useStore('AuthorByInitial');
 
   const setAuthors = () => {
     const currentLetter = getOr({}, 'letters', authors);

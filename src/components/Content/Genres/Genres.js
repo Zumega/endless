@@ -2,10 +2,12 @@ import React from 'react';
 import Actions from '../../../store/Actions';
 import './Genres.scss'
 import MemoContainer from '../../MemoContainer';
+import useBaseStore from "../../Utility/Hooks/useBaseStore";
 import useStore from "../../Utility/Hooks/useStore";
 
 const Genres = () => {
-  const {genres, dispatch} = useStore('GenresContainer');
+  const {genres} = useBaseStore('GenresContainer');
+  const {dispatch} = useStore('GenresContainer');
 
   const handleGenre = genre => {
     dispatch({type: Actions.GENRE, payload: genre});

@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { simpleString } from '../../Utility/Utilities';
 import MemoContainer from '../../MemoContainer';
+import useBaseStore from "../../Utility/Hooks/useBaseStore";
 import useStore from "../../Utility/Hooks/useStore";
 
 const Stories = () => {
-  const {stories, genre} = useStore('Stories');
+  const {stories} = useBaseStore('Stories');
+  const {genre} = useStore('Stories');
   const genreStories = stories[simpleString(genre)];
 
   return (
@@ -27,7 +29,7 @@ const Stories = () => {
                 }
               </ul>
             </div>
-          ) : null
+          ) : <section>No {genre} stories yet.</section>
       }
     </MemoContainer>
   );

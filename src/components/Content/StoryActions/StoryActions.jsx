@@ -35,7 +35,6 @@ const StoryActions = () => {
           <li className="col-4"><button onClick={handleFullScreen}>Full Screen</button></li>
           <li className="col-4"><button onClick={handleFlag}>Flag</button></li>
           <li className="col-4"><button onClick={handleThumbUp}>Thumb Up</button></li>
-          <li className="col-4"><button onClick={handleThumbDown}>Thumb Down</button></li>
         </ul>
       </div>
     </MemoContainer>

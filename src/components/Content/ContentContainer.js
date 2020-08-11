@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route  } from 'react-router-dom';
+import { Route, Redirect  } from 'react-router-dom';
 import useStore from "../Utility/Hooks/useStore";
 
 import './Content.scss';
@@ -8,9 +8,9 @@ import Author from './Aurthor/Author';
 import Intro from './Intro/Intro';
 import StoriesContainer from './Stories/StoriesContainer';
 import Story from './Story/Story';
+import LibraryCard from './LibraryCard/LibraryCard';
 
 // import IndexesContainer from './Indexes/IndexesContainer';
-// import LibraryCardContianer from './LibraryCard/LibraryCardContainer';
 // import TmpSubmit from './TmpSubmit/TmpSubmit';
 // import ErrorHandling from '../Utility/Error/Error';
 
@@ -29,14 +29,13 @@ const ContentContainer = () => {
         return <StoriesContainer />;
       case 'story':
         return <Story genreId={getOr(null, 'match.params.genre', props)} storyId={getOr(null, 'match.params.id', props)} />;
-
-
+      case 'libraryCard':
+        return <LibraryCard />;
+        
       // case 'indexes':
       //   return <IndexesContainer genres={genres} handleGenre={() => console.log('things')} />;
       // case 'submit':
       //   return <TmpSubmit />;
-      // case 'libraryCard':
-      //   return <LibraryCardContianer data={libraryCard} />;
       default:
       //   // TODO: make better loading message
         return <span>LOADING</span>;
@@ -60,6 +59,9 @@ const ContentContainer = () => {
         <Route exact={true} path="/library-card" render={() => handleDataReady('libraryCard')} />
         <Route exact={true} path="/author/:id" render={(props) => handleDataReady('author', props)} />
         <Route exact={true} path="/stories/:genre/:id" render={(props) => handleDataReady('story', props)} />
+        <Route exact={true} path="/profile" render={(props) => handleDataReady('profile', props)} />
+        <Redirect to={{ pathname: "/library-card", state: { from: '/profile' } }} />
+        <Route exact={true} path="/profile/:userId" render={(props) => handleDataReady('profile', props)} />
       </section>
     </div>
   );

@@ -1,10 +1,12 @@
 import React from 'react';
+import useBaseStore from "../../Utility/Hooks/useBaseStore";
 import useStore from "../../Utility/Hooks/useStore";
 import MemoContainer from "../../MemoContainer";
 import Actions from "../../../store/Actions";
 
 const AuthorInitial = () => {
-  const {authors, dispatch} = useStore('AuthorInitial');
+  const {authors} = useBaseStore('AuthorInitial');
+  const {dispatch} = useStore('AuthorInitial');
   const activeInitials = authors.active;
 
   const handleInitialClick = id => {

@@ -15,17 +15,17 @@ const useStore = componentId => {
     case 'AurthorProfile':
       data[Actions.AUTHOR] = store[Actions.AUTHOR];
       break;
-    case 'Intro':
-      data.intro = store.intro;
-      break;
     case 'HeaderContainer':
       data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
     case 'ContentContainer':
       data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
+    case 'LibraryCard':
+      data[Actions.LIBRARY_CARD] = store[Actions.LIBRARY_CARD];
+      break;
     case 'NavContainer':
-      data.menu = store.menu;
+      data[Actions.LIBRARY_CARD] = store[Actions.LIBRARY_CARD];
       data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
     case 'Story':
@@ -39,21 +39,13 @@ const useStore = componentId => {
       data[Actions.STORY_THUMB_DOWN] = store[Actions.STORY_THUMB_DOWN];
       break;
     case 'Stories':
-      data.stories = store.stories;
       data[Actions.GENRE] = store[Actions.GENRE];
       break;
     case 'AuthorsContainer':
       data[Actions.INITIAL] = store[Actions.INITIAL];
       break;
-    case 'AuthorInitial':
-      data.authors = store.authors;
-      break;
     case 'AuthorByInitial':
-      data.authors = store.authors;
       data[Actions.INITIAL] = store[Actions.INITIAL];
-      break;
-    case 'GenresContainer':
-      data.genres = store.genres;
       break;
     default:
   }

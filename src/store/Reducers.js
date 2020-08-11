@@ -12,11 +12,12 @@ const Reducers = (state, {type, payload}) => {
     case Actions.FULL_SCREEN:
     case Actions.GENRE:
     case Actions.INITIAL:
+    case Actions.LIBRARY_CARD:
       return {
         ...data
       };
     case Actions.RESET:
-      return {
+      return { // TODO: more resets
         ...state,
         [Actions.AUTHOR]: payload,
         [Actions.GENRE]: payload,
@@ -24,9 +25,9 @@ const Reducers = (state, {type, payload}) => {
         [Actions.STORY]: payload
       };
     case Actions.STORY:
-      return {
+      return { // TODO: more resets
         ...data,
-        [Actions.GENRE]: null, // TODO: more resets
+        [Actions.GENRE]: null,
         [Actions.INITIAL]: null
       };
     default:

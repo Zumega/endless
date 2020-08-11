@@ -4,6 +4,7 @@ const Actions = {
   FULL_SCREEN: 'fullScreen',
   GENRE: 'genre',
   INITIAL: 'selectedInitial',
+  LIBRARY_CARD: 'libraryCard',
   RESET: 'reset',
   STORY: 'story',
   STORY_THUMB_UP: 'storyThumbUp',

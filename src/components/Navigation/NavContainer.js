@@ -1,15 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import useBaseStore from "../Utility/Hooks/useBaseStore";
 import useStore from "../Utility/Hooks/useStore";
 import './Navigation.scss';
 
 import MemoContainer from '../MemoContainer';
 
 const NavContainer = () => {
-  const {menu, fullScreen} = useStore('NavContainer');
+  const {menu} = useBaseStore('NavContainer');
+  const {fullScreen, libraryCard} = useStore('NavContainer');
+
+  console.log('libraryCard', libraryCard);
 
   return (
-    <MemoContainer data={[menu, fullScreen]}>
+    <MemoContainer data={[menu, fullScreen, libraryCard]}>
       <nav className={(fullScreen ? 'col-0' : 'col-4') +  ' alpha omega'}>
         <ul>
           {
@@ -18,6 +22,9 @@ const NavContainer = () => {
                 <NavLink to={'/' + data.url} activeClassName="active">{data.text}</NavLink>
               </li>
             ))
+          }
+          {
+            libraryCard && <li><NavLink to={'/profile/' + libraryCard} activeClassName="active">Profile</NavLink></li>
           }
         </ul>
       </nav>
