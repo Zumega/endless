@@ -1,15 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import "./Header.scss";
+import React, { useEffect } from 'react';
+import './Header.scss';
+import { Link, useLocation } from 'react-router-dom';
+import { Actions } from '../../store/Actions';
+import { useStore } from '../Utility/Hooks/useStore';
+import { MemoContainer } from '../MemoContainer';
 
-const HeaderContainer = () => {
+export const HeaderContainer = () => {
+  const { fullScreen, dispatch } = useStore('HeaderContainer');
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (pathname === '/') {
+      dispatch({ type: Actions.RESET, payload: null });
+    }
+  }, [pathname, dispatch]);
+
   return (
-    <header className="row">
-      <h1 className="col-24">
-        <Link to="/">Endless Story</Link>
-      </h1>
-    </header>
+    <MemoContainer data={[fullScreen]}>
+      <header data-id="HeaderContainer" className="row">
+        <h1 className="col-24" style={{ fontSize: fullScreen ? '16pt' : 'inherit' }}>
+          <Link to="/">Endless Story</Link>
+        </h1>
+      </header>
+    </MemoContainer>
   );
 };
-
-export default HeaderContainer;

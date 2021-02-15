@@ -1,26 +1,27 @@
-import React  from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from 'react';
 import './App.scss';
-import HeaderContainer from './components/Header/HeaderContainer';
-import NavContainer from './components/Navigation/NavContainer';
-import ContentContainer from './components/Content/ContentContainer';
-import './components/Utility/Services';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { BaseStore } from '../src/store/BaseStore';
+import { Store } from '../src/store/Store';
 
-const App = () => {
-  // const [error, setError] = useState(null);
-  const error = '';
+import { HeaderContainer } from './components/Header/HeaderContainer';
+import { NavContainer } from './components/Navigation/NavContainer';
+import { ContentContainer } from './components/Content/ContentContainer';
 
+export const App = () => {
   return (
-    <Router>
-      <div className="mainContainer container">
-        <HeaderContainer />
-        <div className="navBodyContainer row">
-          <NavContainer />
-          <ContentContainer error={error} />
-        </div>
-      </div>
-    </Router>
+    <BaseStore>
+      <Store>
+        <Router>
+          <div className="mainContainer container">
+            <HeaderContainer />
+            <div className="navBodyContainer row">
+              <NavContainer />
+              <ContentContainer />
+            </div>
+          </div>
+        </Router>
+      </Store>
+    </BaseStore>
   );
 };
-
-export default App;

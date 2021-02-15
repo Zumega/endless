@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 // var join = require('url-join');
 
 // https://github.com/sindresorhus/is-absolute-url/blob/master/index.js#L7
@@ -13,10 +13,12 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
-axios.interceptors.response.use((response) => {
+axios.interceptors.response.use(
+  response => {
     return response;
   },
-  (response) => {
-    console.log('error', response);
+  response => {
+    console.log("error", response);
     return response;
-  });
+  }
+);

@@ -1,13 +1,7 @@
 import React from 'react';
 import './Error.scss';
 
-const ErrorHandling = ({error}) => {
+export const ErrorHandling = ({ error }) => {
   console.log(error);
-  return (
-    <div>
-      {error}
-    </div>
-  );
+  return <div>{error}</div>;
 };
-
-export default ErrorHandling;
