@@ -1,0 +1,46 @@
+[
+  {
+    "guid": "987645312",
+    "authorId": "walker-texas-typer",
+    "name": "Walker Texas Typer",
+    "about": {
+      "bio": "Hello I am a monkey",
+      "headshot": {
+        "image": "bill.png",
+        "title": "This is Bill"
+      },
+      "storyCount": 1
+    },
+    "stories": {
+      "live": {
+        "Fantasy": [
+          {
+            "id": "789654312",
+            "name": "woop toast"
+          },
+          {
+            "id": "0326546807",
+            "name": "Monkey Fart"
+          }
+        ]
+      },
+      "inEdit": {
+        "Fantasy": [
+          {
+            "id": "939393939381217127",
+            "name": "There was a lake",
+            "content": ["There was a lake, it was deep, and blue.", "One day it wasn't so blue.", "Then not so deep"]
+          }
+        ]
+      },
+      "inProgress": {
+        "Sci-Fi": [
+          {
+            "id": "asd;lfkjasd;f",
+            "name": "I like cheese"
+          }
+        ]
+      }
+    }
+  }
+]

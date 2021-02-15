@@ -1,0 +1,21 @@
+{
+  "active": ["NUMBER", "W"],
+  "letters": {
+    "NUMBER": [
+      {
+        "name": "69_Letters",
+        "guid": "654987312"
+      }
+    ],
+    "W": [
+      {
+        "name": "Wonder Wrighter",
+        "guid": "987654321"
+      },
+      {
+        "name": "Walker Texas Typer",
+        "guid": "321654987"
+      }
+    ]
+  }
+}
