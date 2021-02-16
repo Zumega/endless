@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { UserName } from './UserName';
 import { Password } from './Password';
 import { useStore } from '../Utility/Hooks/useStore';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 import { Actions } from '../../store/Actions';
 
 export const LibraryCard = () => {

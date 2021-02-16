@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 import { useStore } from '../Utility/Hooks/useStore';
 
 export const AuthorProfile = () => {

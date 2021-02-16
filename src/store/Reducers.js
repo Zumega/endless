@@ -45,6 +45,11 @@ export const Reducers = (state, { type, payload }) => {
         ...data,
         [Actions.STORY_EDIT]: payload
       };
+    case Actions.URL_PARAMS:
+      console.log('PAYLOAD', payload);
+      return {
+        ...data
+      };
     default:
       return state;
   }

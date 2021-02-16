@@ -6,7 +6,7 @@ import { Store } from '../src/store/Store';
 
 import { HeaderContainer } from './components/Header/HeaderContainer';
 import { NavContainer } from './components/Navigation/NavContainer';
-import { ContentContainer } from './components/Content/ContentContainer';
+import { ContentContainer } from './components/ContentContainer';
 
 export const App = () => {
   return (

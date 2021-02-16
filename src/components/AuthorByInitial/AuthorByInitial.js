@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { simpleString } from '../Utility/Utilities';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 import { useBaseStore } from '../Utility/Hooks/useBaseStore';
 import { useStore } from '../Utility/Hooks/useStore';
 

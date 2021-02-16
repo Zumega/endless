@@ -5,7 +5,7 @@ import './Author.scss';
 import { AuthorProfile } from '../AuthorProfile/AuthorProfile';
 import { StoryGroups } from '../StoryGroups/StoryGroups';
 import { useStore } from '../Utility/Hooks/useStore';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 import { useBaseStore } from '../Utility/Hooks/useBaseStore';
 import { Actions } from '../../store/Actions';
 
