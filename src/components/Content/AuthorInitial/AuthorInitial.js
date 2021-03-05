@@ -5,9 +5,12 @@ import MemoContainer from "../../MemoContainer";
 import Actions from "../../../store/Actions";
 
 const AuthorInitial = () => {
-  const {authors} = useBaseStore('AuthorInitial');
+  const {authorsInitials} = useBaseStore('AuthorInitial');
+
+  console.log('authorsInitials', authorsInitials);
+
   const {dispatch} = useStore('AuthorInitial');
-  const activeInitials = authors.active;
+  const activeInitials = authorsInitials.active;
 
   const handleInitialClick = id => {
     dispatch({type: Actions.INITIAL, payload: id})
@@ -41,7 +44,7 @@ const AuthorInitial = () => {
     return data;
   };
   return (
-    <MemoContainer data={[authors]}>
+    <MemoContainer data={[authorsInitials]}>
       <div className="row">
         <ul id="initialList" className="menu">
           { buildList() }

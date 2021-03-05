@@ -3,6 +3,8 @@ import React from 'react';
 import {bbc} from '../../Utility/Utilities';
 import useBaseStore from "../../Utility/Hooks/useBaseStore";
 import MemoContainer from "../../MemoContainer";
+// what is Deco?
+// import {Deco} from "./deco";
 
 const Intro = () => {
   const {intro} = useBaseStore('Intro');

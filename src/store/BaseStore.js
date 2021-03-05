@@ -5,7 +5,8 @@ import menu from '../data/menu';
 import intro from '../data/intro';
 import genres from '../data/genres';
 import stories from '../data/stories';
-import authors from '../data/authors';
+import authorsInitials from '../data/authorsInitials';
+import authors from '../data/author/data';
 
 const initialState = {
   menu,
@@ -13,13 +14,14 @@ const initialState = {
   genres,
   stories,
   authors,
+  authorsInitials
 };
 
 const BaseStore = ({children}) => {
-  const [state, dispatch] = useReducer(BaseReducers, initialState);
+  const [state] = useReducer(BaseReducers, initialState);
 
   return (
-    <BaseContext.Provider value={[state, dispatch]}>
+    <BaseContext.Provider value={[state, ()=>{console.error('NO DISPATCH')}]}>
       {children}
     </BaseContext.Provider>
   )

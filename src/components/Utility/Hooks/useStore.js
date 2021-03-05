@@ -11,8 +11,9 @@ const useStore = componentId => {
   switch (componentId) {
     case 'Author':
       data[Actions.AUTHOR] = store[Actions.AUTHOR];
+      data[Actions.LIBRARY_CARD] = store[Actions.LIBRARY_CARD];
       break;
-    case 'AurthorProfile':
+    case 'AuthorProfile':
       data[Actions.AUTHOR] = store[Actions.AUTHOR];
       break;
     case 'HeaderContainer':
@@ -29,6 +30,9 @@ const useStore = componentId => {
       data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
     case 'Story':
+      data[Actions.STORY] = store[Actions.STORY];
+      break;
+    case 'StoryEdit':
       data[Actions.STORY] = store[Actions.STORY];
       break;
     case 'StoryActions':

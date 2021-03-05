@@ -1,7 +1,10 @@
 import Actions from './Actions';
+import { useHistory } from "react-router-dom";
 
 const Reducers = (state, {type, payload}) => {
+  const history = useHistory();
   console.log('Reducers', type, payload);
+
   const data = {
     ...state,
     [type]: payload
@@ -13,9 +16,12 @@ const Reducers = (state, {type, payload}) => {
     case Actions.GENRE:
     case Actions.INITIAL:
     case Actions.LIBRARY_CARD:
-      return {
-        ...data
-      };
+      // TODO: look up, verify user
+
+      // why no work?
+      history.push(`/author/${payload}`);
+
+      // return data;
     case Actions.RESET:
       return { // TODO: more resets
         ...state,
@@ -29,6 +35,17 @@ const Reducers = (state, {type, payload}) => {
         ...data,
         [Actions.GENRE]: null,
         [Actions.INITIAL]: null
+      };
+    case Actions.STORY_EDIT:
+      // TODO; navigate to `/author/${payload.userId}/edit/${payload.storyId}`}>
+      const { inEdit } = state.author.stories;
+      const story = Object.keys(inEdit).reduce(() => {
+        // TODO: pull out story using storyId
+      }, []);
+
+      return {
+        ...data,
+        [Actions.STORY_EDIT]: payload
       };
     default:
       return state;

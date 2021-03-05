@@ -7,8 +7,10 @@ const Actions = {
   LIBRARY_CARD: 'libraryCard',
   RESET: 'reset',
   STORY: 'story',
+  STORY_EDIT: 'storyEdit',
   STORY_THUMB_UP: 'storyThumbUp',
   STORY_THUMB_DOWN: 'storyThumbDown',
+  VERIFIED: 'verified',
 };
 
 export default Actions;

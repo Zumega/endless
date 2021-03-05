@@ -14,7 +14,7 @@ const HeaderContainer = () => {
     if(pathname === '/') {
       dispatch({type: Actions.RESET, payload: null})
     }
-  }, [pathname]);
+  }, [pathname, dispatch]);
 
   return (
     <MemoContainer data={[fullScreen]}>

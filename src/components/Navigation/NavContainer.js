@@ -19,12 +19,13 @@ const NavContainer = () => {
           {
             menu.map(data => (
               <li key={data.id}>
-                <NavLink to={'/' + data.url} activeClassName="active">{data.text}</NavLink>
+                {
+                  data.url === 'library-card' && libraryCard ?
+                    <NavLink to={'/author/' + libraryCard} activeClassName="active">Profile</NavLink> :
+                    <NavLink to={'/' + data.url} activeClassName="active">{data.text}</NavLink>
+                }
               </li>
             ))
-          }
-          {
-            libraryCard && <li><NavLink to={'/profile/' + libraryCard} activeClassName="active">Profile</NavLink></li>
           }
         </ul>
       </nav>

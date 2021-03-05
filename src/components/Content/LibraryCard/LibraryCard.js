@@ -20,7 +20,7 @@ const LibraryCard = () => {
       return;
     }
 
-    dispatch({type: Actions.LIBRARY_CARD, payload: userName+password});
+    dispatch({type: Actions.LIBRARY_CARD, payload: 'walker-texas-typer'});
   };
 
   const handleUserNameChange = event => {

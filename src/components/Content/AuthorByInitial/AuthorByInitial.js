@@ -7,11 +7,11 @@ import useStore from "../../Utility/Hooks/useStore";
 import getOr from 'lodash/fp/getOr';
 
 const AuthorByInitial = () => {
-  const {authors} = useBaseStore('AuthorByInitial');
+  const {authorsInitials} = useBaseStore('AuthorByInitial');
   const {selectedInitial} = useStore('AuthorByInitial');
 
   const setAuthors = () => {
-    const currentLetter = getOr({}, 'letters', authors);
+    const currentLetter = getOr({}, 'letters', authorsInitials);
     const authorsPerLetter = currentLetter[selectedInitial];
 
     console.log(currentLetter, authorsPerLetter);
@@ -29,7 +29,7 @@ const AuthorByInitial = () => {
   };
 
   return (
-    <MemoContainer data={[authors, selectedInitial]}>
+    <MemoContainer data={[authorsInitials, selectedInitial]}>
       <ul className="authorInitials menu row potato">
         {setAuthors()}
       </ul>

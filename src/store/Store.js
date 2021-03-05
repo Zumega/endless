@@ -1,5 +1,4 @@
-import
-  React, {createContext, useReducer} from 'react';
+import React, {createContext, useReducer} from 'react';
 import Reducers from './Reducers';
 import Actions from './Actions';
 

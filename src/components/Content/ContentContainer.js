@@ -4,15 +4,12 @@ import useStore from "../Utility/Hooks/useStore";
 
 import './Content.scss';
 
-import Author from './Aurthor/Author';
+import Author from './Author/Author';
 import Intro from './Intro/Intro';
 import StoriesContainer from './Stories/StoriesContainer';
 import Story from './Story/Story';
+import StoryEdit from "./StoryEdit/StoryEdit";
 import LibraryCard from './LibraryCard/LibraryCard';
-
-// import IndexesContainer from './Indexes/IndexesContainer';
-// import TmpSubmit from './TmpSubmit/TmpSubmit';
-// import ErrorHandling from '../Utility/Error/Error';
 
 import getOr from 'lodash/fp/getOr';
 
@@ -29,9 +26,11 @@ const ContentContainer = () => {
         return <StoriesContainer />;
       case 'story':
         return <Story genreId={getOr(null, 'match.params.genre', props)} storyId={getOr(null, 'match.params.id', props)} />;
+      case 'storyEdit':
+        return <StoryEdit id={getOr(null, 'match.params.id', props)} storyId={getOr(null, 'match.params.storyId', props)} />;
       case 'libraryCard':
         return <LibraryCard />;
-        
+
       // case 'indexes':
       //   return <IndexesContainer genres={genres} handleGenre={() => console.log('things')} />;
       // case 'submit':
@@ -58,10 +57,12 @@ const ContentContainer = () => {
         <Route exact={true} path="/submit" render={() => handleDataReady('submit')} />
         <Route exact={true} path="/library-card" render={() => handleDataReady('libraryCard')} />
         <Route exact={true} path="/author/:id" render={(props) => handleDataReady('author', props)} />
+        <Route exact={true} path="/author/:id/edit/:storyId" render={(props) => handleDataReady('storyEdit', props)} />
+
         <Route exact={true} path="/stories/:genre/:id" render={(props) => handleDataReady('story', props)} />
-        <Route exact={true} path="/profile" render={(props) => handleDataReady('profile', props)} />
-        <Redirect to={{ pathname: "/library-card", state: { from: '/profile' } }} />
-        <Route exact={true} path="/profile/:userId" render={(props) => handleDataReady('profile', props)} />
+        {/*<Route exact={true} path="/profile" render={(props) => handleDataReady('profile', props)} />*/}
+        {/*<Redirect to={{ pathname: "/library-card", state: { from: '/profile' } }} />*/}
+        {/*<Route exact={true} path="/profile/:userId" render={(props) => handleDataReady('author', props)} />*/}
       </section>
     </div>
   );

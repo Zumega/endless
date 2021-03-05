@@ -4,6 +4,11 @@
     "authorId": "walker-texas-typer",
     "name": "Walker Texas Typer",
     "about": {
+      "bio": "Hello I am a monkey",
+      "headshot": {
+        "image": "bill.png",
+        "title": "This is Bill"
+      },
       "storyCount": 1
     },
     "stories": {
@@ -19,7 +24,19 @@
           }
         ]
       },
-      "inEdit": {},
+      "inEdit": {
+        "Fantasy": [
+          {
+            "id": "939393939381217127",
+            "name": "There was a lake",
+            "content": [
+              "There was a lake, it was deep, and blue.",
+              "One day it wasn't so blue.",
+              "Then not so deep"
+            ]
+          }
+        ]
+      },
       "inProgress": {
         "Sci-Fi": [
           {

@@ -6,7 +6,7 @@ const BaseReducers = (state, {type, payload}) => {
 
   switch (type) {
     default:
-      return state;
+      return data;
   }
 };
 
