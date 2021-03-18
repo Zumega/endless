@@ -14,8 +14,6 @@ export const Reducers = (state, { type, payload }) => {
     case Actions.GENRE:
     case Actions.INITIAL:
     case Actions.LIBRARY_CARD:
-      // TODO: look up, verify user
-
       return data;
     case Actions.RESET:
       // TODO: more resets
@@ -47,9 +45,7 @@ export const Reducers = (state, { type, payload }) => {
       };
     case Actions.URL_PARAMS:
       console.log('PAYLOAD', payload);
-      return {
-        ...data
-      };
+      return data;
     default:
       return state;
   }
