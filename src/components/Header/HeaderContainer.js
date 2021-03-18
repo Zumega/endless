@@ -3,7 +3,7 @@ import './Header.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { Actions } from '../../store/Actions';
 import { useStore } from '../Utility/Hooks/useStore';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 
 export const HeaderContainer = () => {
   const { fullScreen, dispatch } = useStore('HeaderContainer');

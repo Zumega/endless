@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Content } from './Content';
 import { StoryActions } from '../StoryActions/StoryActions';
 import { NextLinks } from './NextLinks';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 
 import DATA from '../../data/api/fantasy.json';
 

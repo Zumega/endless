@@ -1,9 +1,11 @@
 import React from 'react';
 import './Genres.scss';
 import { Actions } from '../../store/Actions';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 import { useBaseStore } from '../Utility/Hooks/useBaseStore';
 import { useStore } from '../Utility/Hooks/useStore';
+import { NavLink } from 'react-router-dom';
+import { simpleString } from '../Utility/Utilities';
 
 export const Genres = () => {
   const { genres } = useBaseStore('GenresContainer');
@@ -20,8 +22,8 @@ export const Genres = () => {
         <div>
           <ul className="menu">
             {genres.map(genre => (
-              <li className="genre" key={genre} onClick={() => handleGenre(genre)}>
-                {genre}
+              <li className="genre" key={genre}>
+                <NavLink to={`/stories/${simpleString(genre)}`}>{genre}</NavLink>
               </li>
             ))}
           </ul>

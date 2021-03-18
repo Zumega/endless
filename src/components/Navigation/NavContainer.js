@@ -3,7 +3,7 @@ import './Navigation.scss';
 import { NavLink } from 'react-router-dom';
 import { useBaseStore } from '../Utility/Hooks/useBaseStore';
 import { useStore } from '../Utility/Hooks/useStore';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 
 export const NavContainer = () => {
   const { menu } = useBaseStore('NavContainer');

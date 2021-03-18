@@ -23,12 +23,17 @@ export const useStore = componentId => {
     case 'ContentContainer':
       data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
+    case 'GenresContainer':
+      data[Actions.URL_PARAMS] = store[Actions.URL_PARAMS];
+      break;
     case 'LibraryCard':
       data[Actions.LIBRARY_CARD] = store[Actions.LIBRARY_CARD];
       break;
     case 'NavContainer':
       data[Actions.LIBRARY_CARD] = store[Actions.LIBRARY_CARD];
       data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
+      break;
+    case 'StoriesContainer':
       break;
     case 'Story':
       data[Actions.STORY] = store[Actions.STORY];

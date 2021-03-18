@@ -2,7 +2,7 @@ import React from 'react';
 import './Authors.scss';
 import { AuthorInitial } from '../AuthorInitial/AuthorInitial';
 import { AuthorByInitial } from '../AuthorByInitial/AuthorByInitial';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 import { useStore } from '../Utility/Hooks/useStore';
 
 export const Authors = () => {

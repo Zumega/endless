@@ -1,7 +1,7 @@
 import React from 'react';
 import { bbc } from '../Utility/Utilities';
 import { useBaseStore } from '../Utility/Hooks/useBaseStore';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 // what is Deco?
 // import {Deco} from "./deco";
 

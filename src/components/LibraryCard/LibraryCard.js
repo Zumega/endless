@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { UserName } from './UserName';
 import { Password } from './Password';
 import { useStore } from '../Utility/Hooks/useStore';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 import { Actions } from '../../store/Actions';
+import {useHistory} from "react-router-dom";
 
 export const LibraryCard = () => {
+  const history = useHistory();
   const { libraryCard, dispatch } = useStore('LibraryCard');
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -20,6 +22,8 @@ export const LibraryCard = () => {
       return;
     }
 
+    //TODO: validate user then trigger the below
+    history.push(`/author/walker-texas-typer`)
     dispatch({ type: Actions.LIBRARY_CARD, payload: 'walker-texas-typer' });
   };
 

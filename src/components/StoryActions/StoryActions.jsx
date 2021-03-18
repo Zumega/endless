@@ -1,7 +1,7 @@
 import React from 'react';
 import { Actions } from '../../store/Actions';
 import { useStore } from '../Utility/Hooks/useStore';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 
 export const StoryActions = () => {
   const { dispatch, flagStory, fullScreen, story } = useStore('StoryActions');

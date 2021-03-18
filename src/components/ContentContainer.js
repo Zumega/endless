@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Content.scss';
 import { Route, Redirect } from 'react-router-dom';
-import { useStore } from '../Utility/Hooks/useStore';
-import { Author } from '../Author/Author';
-import { Intro } from '../Intro/Intro';
-import { StoriesContainer } from '../Stories/StoriesContainer';
-import { Story } from '../Story/Story';
-import { StoryEdit } from '../StoryEdit/StoryEdit';
-import { LibraryCard } from '../LibraryCard/LibraryCard';
+import { useStore } from './Utility/Hooks/useStore';
+import { Author } from './Author/Author';
+import { Intro } from './Intro/Intro';
+import { StoriesContainer } from './Stories/StoriesContainer';
+import { Story } from './Story/Story';
+import { StoryEdit } from './StoryEdit/StoryEdit';
+import { LibraryCard } from './LibraryCard/LibraryCard';
+import { Actions } from '../store/Actions';
 
 export const ContentContainer = () => {
   const { fullScreen } = useStore('ContentContainer');
@@ -21,7 +22,7 @@ export const ContentContainer = () => {
       case 'intro':
         return <Intro />;
       case 'stories':
-        return <StoriesContainer />;
+        return <StoriesContainer genreId={match?.params?.genre || null} />;
       case 'story':
         return <Story genreId={match?.params?.genre || null} storyId={match?.params?.id || null} />;
       case 'storyEdit':
@@ -51,6 +52,7 @@ export const ContentContainer = () => {
       <section className="container">
         <Route exact={true} path="/" render={() => handleDataReady('intro')} />
         <Route exact={true} path="/stories" render={() => handleDataReady('stories')} />
+        <Route exact={true} path="/stories/:genre" render={props => handleDataReady('stories', props)} />
         <Route exact={true} path="/stories/:genre/:id" render={props => handleDataReady('story', props)} />
         <Route exact={true} path="/indexes" render={() => handleDataReady('indexes')} />
         <Route exact={true} path="/submit" render={() => handleDataReady('submit')} />
@@ -58,7 +60,7 @@ export const ContentContainer = () => {
         <Route exact={true} path="/author/:id" render={props => handleDataReady('author', props)} />
         <Route exact={true} path="/author/:id/edit/:storyId" render={props => handleDataReady('storyEdit', props)} />
 
-        <Redirect to={{ pathname: '/stories', state: { from: '/stories/:genre' } }} />
+        {/*<Redirect to={{ pathname: '/stories', state: { from: '/stories/:genre' } }} />*/}
 
         {/*<Route exact={true} path="/profile" render={(props) => handleDataReady('profile', props)} />*/}
         {/*<Redirect to={{ pathname: "/library-card", state: { from: '/profile' } }} />*/}

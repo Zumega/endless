@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBaseStore } from '../Utility/Hooks/useBaseStore';
 import { useStore } from '../Utility/Hooks/useStore';
-import { MemoContainer } from '../MemoContainer';
+import { MemoContainer } from '../Memo/MemoContainer';
 import { Actions } from '../../store/Actions';
 
 export const AuthorInitial = () => {
