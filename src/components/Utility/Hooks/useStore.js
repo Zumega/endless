@@ -17,11 +17,21 @@ export const useStore = componentId => {
     case 'AuthorProfile':
       data[Actions.AUTHOR] = store[Actions.AUTHOR];
       break;
+    case 'AuthorStories':
+      data[Actions.EDIT_STORY] = store[Actions.EDIT_STORY];
+      data[Actions.OPENED_CLOSED] = store[Actions.OPENED_CLOSED];
+      break;
+    case 'AuthorStoriesSections':
+      data[Actions.OPENED_CLOSED] = store[Actions.OPENED_CLOSED];
+      break;
     case 'HeaderContainer':
       data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
       break;
     case 'ContentContainer':
       data[Actions.FULL_SCREEN] = store[Actions.FULL_SCREEN];
+      break;
+    case 'EditBox':
+      data[Actions.EDIT_STORY] = store[Actions.EDIT_STORY];
       break;
     case 'GenresContainer':
       data[Actions.URL_PARAMS] = store[Actions.URL_PARAMS];

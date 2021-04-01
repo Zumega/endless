@@ -11,5 +11,7 @@ export const Actions = {
   STORY_THUMB_UP: 'storyThumbUp',
   STORY_THUMB_DOWN: 'storyThumbDown',
   VERIFIED: 'verified',
-  URL_PARAMS: 'urlParams'
+  URL_PARAMS: 'urlParams',
+  EDIT_STORY: 'editStory',
+  OPENED_CLOSED: 'openedClosed'
 };

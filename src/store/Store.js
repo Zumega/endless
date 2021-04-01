@@ -3,7 +3,8 @@ import { Reducers } from './Reducers';
 import { Actions } from './Actions';
 
 const initialState = {
-  [Actions.FULL_SCREEN]: false
+  [Actions.FULL_SCREEN]: false,
+  [Actions.OPENED_CLOSED]: {live: false, inProgress: false, inEdit: false}
 };
 
 export const Context = createContext(initialState);

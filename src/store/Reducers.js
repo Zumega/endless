@@ -14,6 +14,8 @@ export const Reducers = (state, { type, payload }) => {
     case Actions.GENRE:
     case Actions.INITIAL:
     case Actions.LIBRARY_CARD:
+    case Actions.EDIT_STORY:
+    case Actions.OPENED_CLOSED:
       return data;
     case Actions.RESET:
       // TODO: more resets
@@ -23,6 +25,7 @@ export const Reducers = (state, { type, payload }) => {
         [Actions.GENRE]: payload,
         [Actions.INITIAL]: payload,
         [Actions.STORY]: payload,
+        [Actions.EDIT_STORY]: payload,
         [Actions.FULL_SCREEN]: false
       };
     case Actions.STORY:
